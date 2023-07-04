@@ -1,0 +1,105 @@
+/*=== MEDIA QUERY ===*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500');
+
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  color: #757575;
+  font-size: 15px;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.account .block {
+  background-color: #fff;
+  border: 1px solid #dedede;
+  padding: 30px;
+  margin: 100px 0;
+}
+.account .block .logo {
+  display: inline-block;
+}
+.account .block a {
+  color: #000;
+}
+.account .block h2 {
+  font-weight: 400;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+
+.account .block form p {
+  margin-bottom: 20px;
+}
+
+.account .block form input[type='email'],
+.account .block form input[type='password'],
+.account .block form input[type='text'] {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.top-header .container {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #dedede;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.btn:focus {
+  color: #ddd;
+}
+
+.btn-main {
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 14px 35px;
+  text-transform: uppercase;
+  font-weight: 200;
+  border-radius: 0;
+}
+
+.btn-main:hover {
+  background: black;
+  color: #fff;
+}
+
+.btn.active:focus,
+.btn:active:focus,
+.btn:focus {
+  outline: 0;
+}
+
+.comment-reply-form textarea,
+.comment-reply-form .btn-main{
+  height: auto;
+}
+
+.widget.widget-subscription .btn-main {
+  width: 100%;
+}
+
+@media (max-width: 400px) {
+  .account .block form .btn-main {
+    padding: 14px 19px;
+  }
+}
+
+.page-404 .btn-main {
+  margin-top: 40px;
+}
