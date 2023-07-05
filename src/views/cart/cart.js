@@ -1,16 +1,31 @@
 // 상품 전체 선택 체크박스
 document.addEventListener("DOMContentLoaded", function() {
-
     const selectAllHeaderCheckbox = document.getElementById("select-all-header");
     const productCheckboxes = document.querySelectorAll(".product-checkbox-input");
-    
+
     selectAllHeaderCheckbox.addEventListener("change", function() {
-    let isChecked = this.checked;
-    
-        for (let i = 0; i < productCheckboxes.length; i++) {
-            productCheckboxes[i].checked = isChecked;
-        }
+      let isChecked = this.checked;
+
+      for (let i = 0; i < productCheckboxes.length; i++) {
+        productCheckboxes[i].checked = isChecked;
+      }
     });
+
+    productCheckboxes.forEach(function(checkbox) {
+      checkbox.addEventListener("change", function() {
+        let isAllChecked = true;
+
+        for (let i = 0; i < productCheckboxes.length; i++) {
+          if (!productCheckboxes[i].checked) {
+            isAllChecked = false;
+            break;
+          }
+        }
+
+        selectAllHeaderCheckbox.checked = isAllChecked;
+      });
+    });
+
     
     // 선택 삭제 버튼
     const removeSelectedBtn = document.getElementById("remove-selected-btn");
@@ -46,16 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const orderAllBtn = document.getElementById("order-all-btn");
     
     orderAllBtn.addEventListener("click", function() {
-    let checkedProductCheckboxes = document.querySelectorAll(".product-checkbox-input:checked");
-    
-        if (checkedProductCheckboxes.length === 0) {
-            alert("선택된 상품이 없습니다.");
-        } else {
-            // 주문 처리 로직 작성
-            
-        }
         // 주문 처리 로직 작성
-    
     });
 
     // 수량이 0일 때 알림
