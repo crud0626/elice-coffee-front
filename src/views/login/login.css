@@ -1,22 +1,4 @@
-/*=== MEDIA QUERY ===*/
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500');
 
-body {
-  line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-p {
-  font-family: 'Poppins', sans-serif;
-  color: #757575;
-  font-size: 15px;
-}
-
-h2 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-}
 
 .account .block {
   background-color: #fff;

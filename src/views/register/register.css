@@ -42,68 +42,7 @@
  
  -------------------------------------------------------------------*/
  /*=== MEDIA QUERY ===*/
- @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500");
- body {
-   line-height: 1.5;
-   font-family: "Poppins", sans-serif;
-   -webkit-font-smoothing: antialiased;
- }
- 
- p {
-   font-family: "Poppins", sans-serif;
-   color: #757575;
-   font-size: 15px;
- }
- 
- h1, h2, h3, h4, h5, h6 {
-   font-family: "Poppins", sans-serif;
- }
- 
- h1, h2, h3, h4, h5, h6 {
-   font-weight: 400;
- }
- 
- ol, ul {
-   margin: 0;
-   padding: 0;
-   list-style: none;
- }
- 
- iframe {
-   border: 0;
- }
- 
- a, a:focus, a:hover {
-   text-decoration: none;
-   outline: 0;
-   color: #000;
- }
- 
- blockquote {
-   font-size: 18px;
-   border-color: #000;
-   padding: 20px 40px;
-   text-align: left;
-   color: #777;
- }
- 
- .navbar-toggle .icon-bar {
-   background: #000;
- }
- 
- input[type=email], input[type=password], input[type=text], input[type=tel] {
-   border-radius: 0;
-   box-shadow: none;
-   height: 45px;
-   outline: none;
-   font-weight: 200;
-   font-size: 12px;
- }
- input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, input[type=tel]:focus {
-   box-shadow: none;
-   border: 1px solid #000;
- }
- 
+
  .form-flex {
   display: flex;
  }
