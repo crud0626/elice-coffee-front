@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-    <!-- Themefisher Icon font -->
-    <link rel="stylesheet" href="../plugins/themefisher-font/style.css">
     <!-- bootstrap.min css -->
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../common/bootstrap.min.css">
     
+    <link rel="stylesheet" type="text/css" href="../../common/common.css">
     <link rel="stylesheet" href="./mypage-list.css">
 </head>
 <body>
@@ -40,8 +38,7 @@
                         <div class="media">
                             <div class="pull-left text-center" href="#!">
                                 <!-- 이미지 파일은 추후 삭제 예정  -->
-                                <img class="media-object user-img" src="../avater.jpg" alt="Image">
-                                <a href="#x" class="btn btn-transparent mt-20">이미지 변경</a>
+                                <img class="media-object user-img" src="../img/avater.jpg" alt="Image">
                             </div>
                             <div class="media-body">
                                 <ul class="user-profile-list">
@@ -52,72 +49,14 @@
                                     <li><span>등급:</span>일반</li>
                                 </ul>
                             </div>
-                            <div class="pull-right">
-                                <a href="#!" class="btn btn-main btn-small">정보 수정</a>
-                            </div>
                         </div>
                     </div>
-                    <!-- 주문 목록 -->
-                    <h3>주문 목록</h3>
-                    <div class="dashboard-wrapper user-dashboard">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>제품명</th>
-                                        <th>결제일</th>
-                                        <th>수량</th>
-                                        <th>결제 금액</th>
-                                        <th>배송 상태</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>나이키</td>
-                                        <td>2016. 05. 16</td>
-                                        <td>2</td>
-                                        <td>99원</td>
-                                        <td><span class="label label-primary">배송중</span></td>
-                                        <td><a href="order.html" class="btn btn-default">상세보기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>나이키</td>
-                                        <td>2016. 05. 16</td>
-                                        <td>3</td>
-                                        <td>150원</td>
-                                        <td><span class="label label-success">배송완료</span></td>
-                                        <td><a href="order.html" class="btn btn-default">상세보기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>나이키</td>
-                                        <td>2016. 05. 16</td>
-                                        <td>3</td>
-                                        <td>150원</td>
-                                        <td><span class="label label-danger">상품 준비중</span></td>
-                                        <td><a href="order.html" class="btn btn-default">상세보기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>나이키</td>
-                                        <td>2016. 05. 16</td>
-                                        <td>2</td>
-                                        <td>99원</td>
-                                        <td><span class="label label-info">결제 완료</span></td>
-                                        <td><a href="order.html" class="btn btn-default">상세보기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>나이키</td>
-                                        <td>2016. 05. 16</td>
-                                        <td>3</td>
-                                        <td>150원</td>
-                                        <td><span class="label label-warning">결제 대기</span></td>
-                                        <td><a href="order.html" class="btn btn-default">상세보기</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="btn-wrapper">
+                        <div>
+                            <a href="../order/mypage-order.html" class="btn btn-main btn-small">주문 내역</a>
+                            <a href="../edit/mypage-edit.html" class="btn btn-main btn-small">회원 정보</a>
                         </div>
                     </div>
-                    <!-- 찜 목록 -->
                 </div>
             </div>
         </div>
