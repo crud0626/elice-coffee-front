@@ -1,3 +1,7 @@
+import { makeTemplate } from '../common/template.js';
+const section = document.querySelector('section');
+makeTemplate(section);
+
 document.getElementById('submitButton').addEventListener('click', function (event) {
   event.preventDefault();
 

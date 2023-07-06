@@ -10,7 +10,7 @@
   display: inline-block;
 }
 .account .block a {
-  color: #000;
+  color: #7A665C;
 }
 .account .block h2 {
   font-weight: 400;
@@ -45,7 +45,7 @@
 }
 
 .btn-main {
-  background: #000;
+  background: #7A665C;
   color: #fff;
   display: inline-block;
   font-size: 11px;
@@ -57,7 +57,7 @@
 }
 
 .btn-main:hover {
-  background: black;
+  background: #8c7f78;
   color: #fff;
 }
 
