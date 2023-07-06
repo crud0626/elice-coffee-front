@@ -12,6 +12,18 @@
     padding: 80px 0;
 }
 
+.delete {
+    background-color: #dc3546;
+}
+
+.delete:hover {
+    background-color: #ff0000;
+}
+
+.small-block {
+    font-size: 1rem;
+}
+
 /* SIGN IN CSS */
 
 .account .block {
@@ -89,12 +101,4 @@
 .btns {
     display: flex;
     justify-content: space-between;
-}
-
-.delete {
-    background-color: #dc3546;
-}
-
-.delete:hover {
-    background-color: #ff0000;
 }
