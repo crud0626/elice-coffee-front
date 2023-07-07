@@ -1,3 +1,5 @@
 import { makeTemplate } from '../common/template.js';
-const section = document.querySelector('section');
-makeTemplate(section);
+const homeHTML = `<p>테스트</p>`;
+
+const body = document.querySelector('body');
+makeTemplate(body, homeHTML);
