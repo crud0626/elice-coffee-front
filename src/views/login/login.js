@@ -1,6 +1,39 @@
 import { makeTemplate } from '../common/template.js';
-const section = document.querySelector('section');
+const section = document.querySelector('body');
 makeTemplate(section);
+
+const loginHTML = `
+<section class="signin-page account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="block text-center">
+                        <a class="logo" href="index.html">
+                            <img src="images/logo.png" alt="">
+                        </a>
+                        <h2 class="text-center">WELCOME ☕️ Elice Coffee</h2>
+                        <form id="form" class="text-left clearfix" action="index.html">
+                            <div class="form-group">
+                                <input type="text" id="idInput" class="form-control" placeholder="아이디">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="passwordInput" class="form-control"
+                                    placeholder="비밀번호">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" id="submitButton" class="btn btn-main text-center">LOGIN</button>
+                            </div>
+                        </form>
+                        <p class="mt-20">처음 이신가요 ? <a href="../register/register.html"> 회원가입</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+`;
+
+// loginHTML 변수에 담긴 HTML 코드를 body 태그 안에 삽입합니다.
+document.body.innerHTML = loginHTML;
 
 document.getElementById('submitButton').addEventListener('click', function (event) {
   event.preventDefault();

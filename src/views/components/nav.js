@@ -33,15 +33,42 @@ const nav = `
 
 export { nav };
 
-// 카테고리 클릭시 리스트를 토글합니다.
+// 카테고리(국가별, 커피용품)이벤트 리스트를 토글합니다.
 window.addEventListener('DOMContentLoaded', function () {
     const dropdownToggleList = document.querySelectorAll('.dropdown-toggle');
+    const dropdownMenuList = document.querySelectorAll('.dropdown-menu');
   
-    dropdownToggleList.forEach((toggle) => {
-      toggle.addEventListener('click', function (event) {
-        event.preventDefault();
-        const parentLi = this.parentElement;
-        parentLi.classList.toggle('active');
+    dropdownToggleList.forEach((toggle, index) => {
+      const parentLi = toggle.parentElement;
+  
+      parentLi.addEventListener('mouseover', function () {
+        showDropdownMenu(index);
+      });
+  
+      parentLi.addEventListener('mouseout', function (event) {
+        hideDropdownMenu(event, index);
+      });
+  
+      dropdownMenuList[index].addEventListener('mouseover', function () {
+        showDropdownMenu(index);
+      });
+  
+      dropdownMenuList[index].addEventListener('mouseout', function (event) {
+        hideDropdownMenu(event, index);
       });
     });
+  
+    function showDropdownMenu(index) {
+      const parentLi = dropdownToggleList[index].parentElement;
+      parentLi.classList.add('active');
+    }
+  
+    function hideDropdownMenu(event, index) {
+      const relatedTarget = event.relatedTarget || event.toElement;
+      const parentLi = dropdownToggleList[index].parentElement;
+  
+      if (!parentLi.contains(relatedTarget)) {
+        parentLi.classList.remove('active');
+      }
+    }
   });
