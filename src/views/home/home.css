@@ -1,3 +1,18 @@
 .page-name, .coffee-write{
   text-align: end;
+  margin-bottom: 30px;
+}
+
+.product-item {
+  text-align: center;
+}
+
+.md-best {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.row {
+  margin-top: 60px;
 }

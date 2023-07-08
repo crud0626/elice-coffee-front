@@ -2,6 +2,8 @@
 
 header {
   position: fixed;
+  z-index: 1;
+  width: 100%;
   top: 0;
   left: 0;
   right: 0;
@@ -62,6 +64,7 @@ a:hover {
 
 nav {
   position: fixed;
+  z-index: 1;
   display: flex;
   margin-top: 50px;
   justify-content: space-between;
@@ -103,11 +106,12 @@ nav a {
 
 /* 본문 스타일 */
 section {
-  padding-top: 80px; /* 헤더와 내비게이션의 높이만큼 여백 추가 */
+  min-height: calc(100% - 120px);
+  padding-top: 80px;
 }
 
 footer {
-  position: fixed;
+  width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
