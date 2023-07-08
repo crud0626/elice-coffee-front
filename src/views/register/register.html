@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Elice Coffee | 회원가입</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+  <!-- css -->
+  <link rel="stylesheet" href="../common/common.css">
+  <link rel="stylesheet" href="../common/bootstrap.min.css">
+  <link rel="stylesheet" href="register.css">
+
+  <script defer src="register.js"></script>
+
+</head>
+
+<body id="body">
+
+<section class="signin-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="block text-center">
+          <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="">
+          </a>
+          <h2 class="text-center">회원가입</h2>
+          <form class="text-left clearfix" action="index.html">
+            <div class="form-group form-flex">
+              <input type="text" class="form-control"  placeholder="아이디" id="userId">
+              <button type="button" class="btn btn-small text-center" id="idDuplicateButton">중복확인</button>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control"  placeholder="비밀번호" id="userPwd">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control"  placeholder="비밀번호 재확인" id="userPwdChk">
+              </div>
+            <div class="form-group">
+              <input type="text" class="form-control"  placeholder="이름" id="userName">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control"  placeholder="이메일 | test@example.com" id="userEmail">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"  placeholder="전화번호 | 000-0000-0000" id="userTel">
+              </div>
+            
+            <div class="text-center">
+              <button type="button" class="btn btn-main text-center" id="signinButton">가입하기</button>
+            </div>
+          </form>
+          <p class="mt-20">이미 계정이 있으신가요?<a href="../login/login.html" class="textCoffee"> 로그인</a></p>
+          <p><a href="forget-password.html">비밀번호를 잊으셨나요?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </body>
+  </html>

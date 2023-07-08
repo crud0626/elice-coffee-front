@@ -1,0 +1,104 @@
+.mt-20 {
+    margin-top: 20px;
+}
+
+.btn-transparent {
+    background: transparent;
+    padding: 0;
+    color: #000;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.delete {
+    background-color: #dc3546;
+}
+
+.delete:hover {
+    background-color: #ff0000;
+}
+
+.small-block {
+    font-size: 1rem;
+}
+
+/* SIGN IN CSS */
+
+.account .block {
+    background-color: #fff;
+    border: 1px solid #dedede;
+    padding: 30px;
+    margin: 100px 0;
+}
+
+.account .block .logo {
+    display: inline-block;
+}
+
+.account .block a {
+    color: #000;
+}
+
+.account .block h2 {
+    font-weight: 400;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+
+.account .block form {
+    margin-top: 40px;
+}
+
+@media (max-width: 400px) {
+    .account .block form .btn-main, .account .block form .btn-solid-border, .account .block form .btn-transparent, .account .block form .btn-small {
+        padding: 14px 19px;
+    }
+}
+
+.account .block form p {
+    margin-bottom: 20px;
+}
+
+.account .block form .form-control {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    height: 45px;
+    outline: none;
+    font-weight: 200;
+    font-size: 12px;
+}
+  
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #000;
+}
+  
+.btn-small {
+    padding: 8px 25px;
+    font-size: 10px;
+}
+
+.btn-main, .btn-small, .btn-solid-border {
+    background: #000;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 14px 35px;
+    text-transform: uppercase;
+    font-weight: 200;
+    border-radius: 0;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
