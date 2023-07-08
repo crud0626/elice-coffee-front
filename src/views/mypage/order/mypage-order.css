@@ -1,3 +1,9 @@
+p {
+    font-family: "Poppins", sans-serif;
+    color: #757575;
+    font-size: 15px;
+}
+
 .mt-20 {
     margin-top: 20px;
 }
@@ -41,28 +47,35 @@
 }
 
 /* Dashboard wrapper */
-.dashboard-wrapper {
-    border: 1px solid #dedede;
-    margin-top: 30px;
-    padding: 20px;
+.block {
+    padding: 15px;
+    margin-bottom: 10px;
 }
 
-.dashboard-wrapper h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
+.page-wrapper {
+    padding: 70px 0;
 }
 
-.dashboard-wrapper h4 {
+.widget-title {
+    font-weight: 400;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 16px;
 }
 
-.dashboard-wrapper .user-img {
-    width: 120px;
-    border-radius: 100px;
+.status, .total-price {
+    font-weight: bold;
 }
 
 .btn:disabled, .btn:disabled:hover {
     background-color: #cccccc;
+}
+
+table, tr, th, td {
+    text-align: center;
 }
 
 .table tbody tr td {

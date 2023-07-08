@@ -1,4 +1,109 @@
+import { userData } from '../../../mock/user.js';
+import { makeTemplate } from '../../common/template.js';
+
 const pwdRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+function render(userData) {
+    const { name, email, phoneNumber, address } = userData;
+
+    return `
+        <main>
+            <section class="signin-page account">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="block text-center">
+                                <h2 class="text-center withdrawalBtn">회원 정보 수정</h2>
+                                <form id="editForm" class="text-left clearfix">
+                                    <div class="form-group">
+                                        <input 
+                                            name="name"
+                                            type="text" 
+                                            class="form-control" 
+                                            value="${name}" 
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input 
+                                            name="email"
+                                            type="email" 
+                                            class="form-control"  
+                                            placeholder="이메일을 입력해주세요." 
+                                            value="${email}"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input 
+                                            name="address"
+                                            type="text" 
+                                            class="form-control"  
+                                            placeholder="주소를 입력해주세요." 
+                                            value="${address}"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input 
+                                            name="phoneNumber"
+                                            type="text" 
+                                            class="form-control"  
+                                            placeholder="전화번호를 입력해주세요." 
+                                            value="${phoneNumber}"
+                                        />
+                                    </div>
+                                    <!-- password -->
+                                    <div class="form-group">
+                                        <input 
+                                            name="currentPassword" 
+                                            type="password" 
+                                            class="form-control"  
+                                            placeholder="현재 비밀번호"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input 
+                                            id="newPassword" 
+                                            name="newPassword" 
+                                            type="password" 
+                                            class="form-control"  
+                                            placeholder="새로운 비밀번호"
+                                        />
+                                        <span class="help-block small-block" aria-labelledby="newPassword">
+                                            * 최소 8자리, 한개 이상의 대소문자, 숫자, 특수문자( !, @, #, $, %, &, *, ? )를 사용해야 합니다.
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input 
+                                            name="confirmNewPassword" 
+                                            type="password" 
+                                            class="form-control"  
+                                            placeholder="새로운 비밀번호 확인"
+                                        />
+                                    </div>
+                                </form>
+                                <div class="btns">
+                                    <button class="btn btn-main text-center delete">회원 탈퇴</button>
+                                    <button 
+                                        type="submit" 
+                                        class="btn btn-main text-center" 
+                                        form="editForm"
+                                    >
+                                        수정 완료
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    `;
+}
+
+const body = document.querySelector('body');
+makeTemplate(body, render(userData));
+
+/* */
 
 const formElem = document.querySelector('form');
 const withdrawalBtn = document.querySelector('.withdrawalBtn');

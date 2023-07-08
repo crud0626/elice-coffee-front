@@ -15,6 +15,8 @@ import { product, product2, product3 } from "./products.js";
  *   userId: string,
  *   orderAddress: string,
  *   status: string
+ *   itemTotal: Number
+ *   orderDate: Date
  * }
  */
 
@@ -40,4 +42,6 @@ export const orderData = {
     userId: "1234567",
     orderAddress: "서울특별시 서초구 사당동 1232",
     status: "shipping",
+    itemTotal: 18500, // 공통함수 생성하면 해당 함수 호출하도록 변경 예정
+    orderDate: new Date("2023-7-21")
 };
