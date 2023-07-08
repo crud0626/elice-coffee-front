@@ -1,7 +1,7 @@
 import { makeTemplate } from '../common/template.js';
 const homeHTML = `
 
-<section class="md-section">
+<section class="md-products">
         <div class="container">
             <div class="row">
                 <h2 class="md-best">MD 추천 상품</h2>
@@ -185,8 +185,15 @@ const homeHTML = `
               지금 이곳에서, 커피를 경험하세요!
             </h4>
 					</ol>
-				</div>		
+				</div>
 	</div>
+</section>
+
+<section class="another-products">
+  <div class="container">
+    <div>
+    </div>
+  </div>
 </section>
 `;
 
