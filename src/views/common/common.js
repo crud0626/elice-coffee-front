@@ -1,27 +1,37 @@
 /**
- * 쓸만한? 공통 함수
+ * "쓸만한" 공통 함수
  */
+const g = {
+    /**
+     * element의 id에 대하여 해당 요소를 화면 가운데 표시한다.
+     * 입력받아야 되는 값이 입력되지 않았을 때,
+     * 해당 값을 입력하라는 의미로 함수를 호출한다.
+     * @param {String} id element의 id 값 (string) 
+     */
+    centerFocus: (id) => {
+        // 01. querySelector를 통하여 해당 id 정보를 가져온다.
+        let el = document.querySelector(`#${id}`);
+        // 02. 해당 element가 존재한다면, 화면 가운데 해당하는 요소를 위치시키고, 포커싱을 한다.
+        if (el) {
+            el.scrollIntoView({ block: "center" });
+            el.focus();
+        }
+        // 테스트 전용 코드. 필요 시 사용.
+        // else {
+        //     console.log(`id가 ${id}에 해당하는 element가 존재하지 않습니다.`);
+        // }
+    },
 
-/**
- * element의 id에 대하여 해당 요소를 화면 가운데 표시한다.
- * 입력받아야 되는 값이 입력되지 않았을 때,
- * 해당 값을 입력하라는 의미로 함수를 호출한다.
- * @param {String} id element의 id 값 (string) 
- */
-// centerFocus = (id) => {
-//     // 01. querySelector를 통하여 해당 id 정보를 가져온다.
-//     let el = document.querySelector(`#${id}`);
-//     // 02. 해당 element가 존재한다면, 화면 가운데 해당하는 요소를 위치시키고, 포커싱을 한다.
-//     if(el){
-//         el.scrollIntoView({ block: "center" });
-//         el.focus();
-//     }
-//     // 테스트 전용 코드. 필요 시 사용.
-//     // else {
-//     //     console.log(`id가 ${id}에 해당하는 element가 존재하지 않습니다.`);
-//     // }
-// }
+    /**
+     * 금액 매개변수를 받아 string형으로 변환하고 3자리마다 ','를 추가한다.
+     * @param {any} num
+     */
+    setParseStringAmount: (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+}
 
+export default g;
 
 /* ----------------------------------------------------------------- */
 
@@ -157,4 +167,4 @@ function setDateFormat(strNum, format) {
 }
 
 
-export { setParseStringAmount }
+// export { setParseStringAmount }
