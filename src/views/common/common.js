@@ -8,19 +8,19 @@
  * 해당 값을 입력하라는 의미로 함수를 호출한다.
  * @param {String} id element의 id 값 (string) 
  */
-centerFocus = (id) => {
-    // 01. querySelector를 통하여 해당 id 정보를 가져온다.
-    let el = document.querySelector(`#${id}`);
-    // 02. 해당 element가 존재한다면, 화면 가운데 해당하는 요소를 위치시키고, 포커싱을 한다.
-    if(el){
-        el.scrollIntoView({ block: "center" });
-        el.focus();
-    }
-    // 테스트 전용 코드. 필요 시 사용.
-    // else {
-    //     console.log(`id가 ${id}에 해당하는 element가 존재하지 않습니다.`);
-    // }
-}
+// centerFocus = (id) => {
+//     // 01. querySelector를 통하여 해당 id 정보를 가져온다.
+//     let el = document.querySelector(`#${id}`);
+//     // 02. 해당 element가 존재한다면, 화면 가운데 해당하는 요소를 위치시키고, 포커싱을 한다.
+//     if(el){
+//         el.scrollIntoView({ block: "center" });
+//         el.focus();
+//     }
+//     // 테스트 전용 코드. 필요 시 사용.
+//     // else {
+//     //     console.log(`id가 ${id}에 해당하는 element가 존재하지 않습니다.`);
+//     // }
+// }
 
 
 /* ----------------------------------------------------------------- */
@@ -157,3 +157,4 @@ function setDateFormat(strNum, format) {
 }
 
 
+export {setParseStringAmount};
