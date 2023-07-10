@@ -14,9 +14,11 @@ import { product, product2, product3 } from "./products.js";
  *   }],
  *   userId: string,
  *   orderAddress: string,
- *   status: string
- *   itemTotal: Number
- *   orderDate: Date
+ *   status: string,
+ *   itemTotal: Number,
+ *   orderDate: Date,
+ *   receiver: String,
+ *   receiverPhone: String
  * }
  */
 
@@ -44,4 +46,6 @@ export const orderData = {
   status: "shipping",
   itemTotal: 18500, // 공통함수 생성하면 해당 함수 호출하도록 변경 예정
   orderDate: new Date("2023-7-21"),
+  receiver: "홍길동",
+  receiverPhone: "010-1234-5678"
 };

@@ -9,6 +9,7 @@ const payRouter = require('./routes/payRouter');
 const cartRouter = require('./routes/cartRouter');
 const mypageRouter = require('./routes/mypageRouter');
 const productRouter = require('./routes/productRouter');
+const orderRouter = require('./routes/orderRouter');
 
 const PORT = process.env.PORT || 8080;
 
@@ -26,6 +27,7 @@ app.use('/pay', payRouter);
 app.use('/cart', cartRouter);
 app.use('/mypage', mypageRouter);
 app.use('/product', productRouter);
+app.use('/order', orderRouter)
 
 app.listen(PORT, (err) => {
     if (err) {
