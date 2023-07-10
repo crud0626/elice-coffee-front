@@ -22,13 +22,13 @@ const g = {
     // }
   },
 
-  /**
-   * 금액 매개변수를 받아 string형으로 변환하고 3자리마다 ','를 추가한다.
-   * @param {any} num
-   */
-  setParseStringAmount: (num) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  },
+    /**
+     * 금액 매개변수를 받아 string형으로 변환하고 3자리마다 ','를 추가한다.
+     * @param {any} num
+     */
+    setParseStringAmount: (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
 
   /**
    * 날짜 형태의 매개변수를 받아 string형식으로 변환한다.
@@ -49,7 +49,18 @@ const g = {
       ("00" + dt.getMinutes()).slice(-2)
     );
   },
-};
+
+    /**
+     * 유저의 페이지를 이동시키는 함수, URL에서 host를 제외한 path부분만 입력한다.
+     * @param {String} path
+     * @example 
+     * g.redirectUserPage('/mypage/edit');
+     */
+    redirectUserPage: (path) => {
+        const host = window.location.origin;
+        window.location.href = `${host}${path}`;
+    }
+}
 
 export default g;
 
