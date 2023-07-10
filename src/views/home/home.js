@@ -197,6 +197,5 @@ const homeHTML = `
 </section>
 `;
 
-
 const body = document.querySelector('body');
 makeTemplate(body, homeHTML);
