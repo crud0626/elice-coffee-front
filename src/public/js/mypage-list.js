@@ -1,10 +1,9 @@
-import { userData } from "../../../mock/user.js";
-import { makeTemplate } from "../../common/template.js";
+import { userData } from '../mock/user.js';
+import { makeTemplate } from "./common/template.js";
 
 function template(userData) {
     const { id, name, email, phoneNumber, address, profileSrc } = userData;
     // 
-
     return `
         <main>
             <section class="page-header">
@@ -48,8 +47,8 @@ function template(userData) {
                             </div>
                             <div class="btn-wrapper">
                                 <div>
-                                    <a href="../order/mypage-order.html" class="btn btn-main btn-small">주문 내역</a>
-                                    <a href="../edit/mypage-edit.html" class="btn btn-main btn-small">회원 정보</a>
+                                    <a href="/mypage/order" class="btn btn-main btn-small">주문 내역</a>
+                                    <a href="/mypage/edit" class="btn btn-main btn-small">회원 정보</a>
                                 </div>
                             </div>
                         </div>
