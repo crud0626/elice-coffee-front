@@ -1,9 +1,11 @@
 import { userData } from '../mock/user.js';
 import { makeTemplate } from "./common/template.js";
+import { rankImg, ranks } from '../constants/index.js';
 
 function template(userData) {
-    const { id, name, email, phoneNumber, address, profileSrc } = userData;
-    // 
+    const { name, email, phoneNumber, address, point, rank } = userData;
+    const profileSrc = rankImg[rank], rankName = ranks[rank];
+    
     return `
         <main>
             <section class="page-header">
@@ -30,8 +32,7 @@ function template(userData) {
                             <div class="dashboard-wrapper dashboard-user-profile">
                                 <div class="media">
                                     <div class="pull-left text-center" href="#!">
-                                        ${/** 배포 후 profileSrc로 변경 */''}
-                                        <img class="media-object user-img" src="../../../assets/avater.jpg" alt="profile image">
+                                        <img class="media-object user-img" src="${profileSrc}" alt="profile image">
                                     </div>
                                     <div class="media-body">
                                         <ul class="user-profile-list">
@@ -39,8 +40,8 @@ function template(userData) {
                                             <li><span>이메일:</span>${email}</li>
                                             <li><span>휴대전화:</span>${phoneNumber}</li>
                                             <li><span>주소:</span>${address}</li>
-                                            <li><span>포인트:</span>0</li>
-                                            <li><span>등급:</span>일반</li>
+                                            <li><span>포인트:</span>${point}</li>
+                                            <li><span>등급:</span>${rankName}</li>
                                         </ul>
                                     </div>
                                 </div>

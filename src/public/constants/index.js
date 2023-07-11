@@ -6,9 +6,15 @@ const API_END_POINT = "http://kdt-sw-5-team03.elicecoding.com:3001/api/v1/";
  * 등급 이미지 src - 추후 추가예정
 */
 const ranks = {
-    "bronze" : "브론즈",
+    "bronze": "브론즈",
 	"silver": "실버",
     "gold": "골드"
+}
+
+const rankImg = {
+    "bronze": '/assets/rank/bronze.png',
+    "silver": '',
+    "gold": ''
 }
 
 /* 배송 상태 */
@@ -34,6 +40,7 @@ const validateRegex = {
 export {
     API_END_POINT,
     ranks,
+    rankImg,
     deliveryStatus,
     validateRegex
 };
