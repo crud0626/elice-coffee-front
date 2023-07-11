@@ -1,6 +1,6 @@
 const header = `
     <header>
-    <a href="/home"><h1>☕️ Elice Coffee</h1></a>
+    <a href="/"><h1>☕️ Elice Coffee</h1></a>
     <a href="/mypage"><div>마이페이지</div></a>
     <a href="/cart"><div>장바구니</div></a>
     <a href="/mypage/order"><div>주문목록</div></a>

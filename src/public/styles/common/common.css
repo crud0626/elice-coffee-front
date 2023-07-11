@@ -129,12 +129,17 @@ footer {
 
 .copyright {
   color: whitesmoke;
+  margin-top: 12px;
 }
 
 .f-info {
   text-align: center;
   margin-top: 10px;
   font-size: small;
+  color: whitesmoke;
+}
+
+.f-logo {
   color: whitesmoke;
 }
 
