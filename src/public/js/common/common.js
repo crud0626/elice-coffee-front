@@ -60,20 +60,6 @@ const g = {
     const host = window.location.origin;
     window.location.href = `${host}${path}`;
   },
-
-  /**
-   * 쿠키 설정. 만료일은 익일 0시를 기준으로 한다.
-   * @param {any} name  쿠키 명
-   * @param {any} value 쿠키 값
-   */
-  setCookie: (name, value) => {
-    let todayDate = new Date();
-    let nextDate = new Date();
-    nextDate.setDate(nextDate.getDate() + 1);
-    nextDate.setHours(0, 0, 0, 0);
-    // let Dday = nextDate.getTime() - todayDate.getTime();
-    document.cookie = name + '=' + value + ';expires=' + nextDate.toUTCString() + ';path=/';
-  },
 };
 
 export default g;

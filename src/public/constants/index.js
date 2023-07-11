@@ -1,9 +1,9 @@
 // API
-const API_END_POINT = "http://kdt-sw-5-team03.elicecoding.com:3001/api/v1/";
+// const API_END_POINT = "http://kdt-sw-5-team03.elicecoding.com:3001/api/v1"; // 배포 후 이 주소로 적용 예정
+const API_END_POINT = "http://localhost:3001/api/v1";
 
 /**
  * ranks 
- * 등급 이미지 src - 추후 추가예정
 */
 const ranks = {
     "bronze": "브론즈",
@@ -13,8 +13,8 @@ const ranks = {
 
 const rankImg = {
     "bronze": '/assets/rank/bronze.png',
-    "silver": '',
-    "gold": ''
+    "silver": '/assets/rank/silver.png',
+    "gold": '/assets/rank/gold.png'
 }
 
 /* 배송 상태 */
