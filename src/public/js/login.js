@@ -1,4 +1,6 @@
 import { makeTemplate } from './common/template.js';
+import g from './common/common.js';
+
 const loginHTML = `
 <section class="signin-page account">
         <div class="container">
@@ -37,7 +39,7 @@ document.getElementById('submitButton').addEventListener('click', function (even
 
   // 이메일과 비밀번호 입력란의 값을 변수에 저장
   let userId = document.querySelector('#idInput').value;
-  let password = document.querySelector('#passwordInput').value;
+  let userPw = document.querySelector('#passwordInput').value;
 
   // 아이디, 비밀번호 정규표현식을 설정
   const idRegex = /^[a-z0-9]{8,12}$/;
@@ -52,15 +54,17 @@ document.getElementById('submitButton').addEventListener('click', function (even
     return false;
   }
 
-  if (password.trim().length === 0) {
+  if (userPw.trim().length === 0) {
     alert('비밀번호를 입력해주세요.');
     document.querySelector('#passwordInput').focus();
     return false;
   }
 
+  postLogin(userId, userPw)
+  // console.log(postLogin(userId, userPw));
   // 입력 값이 조건에 맞을 경우, 로그인 처리를 진행합니다.
   // 로그인 처리를 완료한 후 메인 페이지로 이동합니다.
-  window.location.href = '/front-end/src/views/home/home.html';
+  // window.location.href = '/front-end/src/views/home/home.html';
 });
 
 // 엔터키를 눌러도 로그인이 가능하게 한다.
@@ -72,3 +76,30 @@ form.addEventListener('submit', function(event) {
     document.getElementById('submitButton').click();
   }
 });
+
+
+// const API_URL = "http://kdt-sw-5-team03.elicecoding.com:3001/api/v1/auth/login";
+const API_URL = "http://localhost:3001/api/v1/auth/login";
+
+const postLogin = (id, pw) => {
+  fetch(API_URL, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({id, pw}),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      const { loginToken, msg, isLogin } = data.data;
+      if(isLogin) {
+        g.setCookie("loginToken", loginToken.token);
+        g.redirectUserPage("/");
+      }
+      else {
+        alert(msg);
+      }
+    });
+}

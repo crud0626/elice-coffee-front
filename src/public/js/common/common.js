@@ -22,13 +22,13 @@ const g = {
     // }
   },
 
-    /**
-     * 금액 매개변수를 받아 string형으로 변환하고 3자리마다 ','를 추가한다.
-     * @param {any} num
-     */
-    setParseStringAmount: (num) => {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
+  /**
+   * 금액 매개변수를 받아 string형으로 변환하고 3자리마다 ','를 추가한다.
+   * @param {any} num
+   */
+  setParseStringAmount: (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  },
 
   /**
    * 날짜 형태의 매개변수를 받아 string형식으로 변환한다.
@@ -50,17 +50,31 @@ const g = {
     );
   },
 
-    /**
-     * 유저의 페이지를 이동시키는 함수, URL에서 host를 제외한 path부분만 입력한다.
-     * @param {String} path
-     * @example 
-     * g.redirectUserPage('/mypage/edit');
-     */
-    redirectUserPage: (path) => {
-        const host = window.location.origin;
-        window.location.href = `${host}${path}`;
-    }
-}
+  /**
+   * 유저의 페이지를 이동시키는 함수, URL에서 host를 제외한 path부분만 입력한다.
+   * @param {String} path
+   * @example
+   * g.redirectUserPage('/mypage/edit');
+   */
+  redirectUserPage: (path) => {
+    const host = window.location.origin;
+    window.location.href = `${host}${path}`;
+  },
+
+  /**
+   * 쿠키 설정. 만료일은 익일 0시를 기준으로 한다.
+   * @param {any} name  쿠키 명
+   * @param {any} value 쿠키 값
+   */
+  setCookie: (name, value) => {
+    let todayDate = new Date();
+    let nextDate = new Date();
+    nextDate.setDate(nextDate.getDate() + 1);
+    nextDate.setHours(0, 0, 0, 0);
+    // let Dday = nextDate.getTime() - todayDate.getTime();
+    document.cookie = name + '=' + value + ';expires=' + nextDate.toUTCString() + ';path=/';
+  },
+};
 
 export default g;
 
