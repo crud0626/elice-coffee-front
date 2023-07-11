@@ -10,21 +10,15 @@
 
         <title>Cart</title>
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
-        
-        <!-- Themefisher Icon font -->
-        <link rel="stylesheet" href="plugins/themefisher-font/style.css">
+ 
         <!-- bootstrap.min css -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <!-- Animate css -->
-        <link rel="stylesheet" href="plugins/animate/animate.css">
-        <!-- Slick Carousel -->
-        <link rel="stylesheet" href="plugins/slick/slick.css">
-        <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-        <!-- Main Stylesheet -->
-        <link rel="stylesheet" href="../../common/common.css">
-        <link rel="stylesheet" href="cart.css">
 
-        <script src="cart.js" defer></script>
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="/styles/common/common.css">
+        <link rel="stylesheet" href="/styles/cart.css">
+
+        <script src="/js/cart.js" type="module" defer></script>
         
     </head>
     <body id="body">
@@ -46,54 +40,68 @@
             </div>
         </section>
 
-        <section id="contentsArea" class="section" style="margin: 5% 20%;">
+        <section id="contentsArea" class="section">
             <div class="container">
                 <div id="cart-container">
                     <div class="cart-products-container" style="width: 100%;" id="cartProductsContainer">
-                        <div class="cart-products-header">
-                            <span class="checkbox">
-                                <input id="select-all-header" type="checkbox">
-                                <button id="remove-selected-btn" style="margin-left: 6px; border: none; border-radius: 2px; color: #fff; background-color: rgb(37, 37, 37);">선택 삭제</button>
-                            </span>
-                            <div class="cart-product-info">상품 정보</div>
-                            <div class="cart-product-count">수량</div>
-                            <div class="cart-product-price">주문금액</div>
-                            <div class="cart-product-fee">배송비</div>
-                        </div>
-                    
-                        <!-- 상품 -->
+
+                        <!-- 장바구니 테이블 -->
                         <div>
-                        <div class="cart-products" style="padding: 5% 0; border-bottom: 1px solid #555; " id="cart-products">
-                        </div>
+                            <table>
+                                <colgroup>
+                                    <col style="width:27px">        <!--체크박스-->
+                                    <col style="width:100px">       <!--이미지-->
+                                    <col style="width:auto">        <!--상품정보-->
+                                    <col style="width:98px">        <!--판매가-->
+                                    <col style="width:75px">        <!--수량-->
+                                    <col style="width:85px">        <!--배송비-->
+                                    <col style="width:110px">       <!--합계-->
+                                </colgroup>
+                                <thead class="cart-product-header">
+                                    <tr>
+                                        <th scope="col"><input id="select-all-header" type="checkbox"></th>
+                                        <th scope="col">이미지</th>
+                                        <th scope="col">상품정보</th>
+                                        <th scope="col">판매가</th>
+                                        <th scope="col">수량</th>
+                                        <th scope="col">배송비</th>
+                                        <th scope="col">합계</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <!-- 장바구니 리스트 시작 -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+
+                    <div id="remove-selected-btn">
+                        <button>선택삭제</button>
+                    </div>
                     
-                    <!-- 선택한 상품 총 요약 -->
+                    <!-- 결제금액 -->
                     <div class="tile is-parent tile-order-summary ml-5">
-                    <div class="box order-summary">
-                        <div class="header mt-5">
-                        <p>결제정보</p>
-                        </div>
-                        <div class="order-info">
-                        <div class="info">
-                            <p>상품금액</p>
-                            <p id="total-amount">원</p>
-                        </div>
-                        <div class="info">
-                            <p>배송비</p><br>
-                            <p id="total-shipping-fee">원</p>
-                        </div>
-                        </div>
-                        <div class="total">
-                        <p>총 결제금액</p>
-                        <p class="total-price" id="total-price"></p><br>
-                        <p style="color: #bcbcbccf;">제품 50,000원 이상 구매시 무료배송됩니다.</p>
+                        <div class="box order-summary">
+                            <div class="order-info">
+                                <div class="info">
+                                    <p>총 상품금액</p>
+                                    <p id="total-amount"></p>
+                                </div>
+                                <div class="info">
+                                    <p>배송비</p><br>
+                                    <p id="total-shipping-fee"></p>
+                                </div>
+                            </div>
+                            <div class="total">
+                                <p>총 결제금액</p>
+                                <p class="total-payment" id="total-payment"></p>
+                            </div>
                         </div>
                         <div class="purchase">
-                            <button class="button is-info mb-5" id="order-selected-btn" style="color: #fff; background-color: rgb(37, 37, 37);">선택 상품 주문</button>
-                            <button class="button is-info" id="order-all-btn" style="color: #fff; background-color: rgb(37, 37, 37);">전체 상품 주문</button>
+                            <button class="button is-info" id="order-selected-btn">선택상품주문</button>
+                            <button class="button is-info" id="order-all-btn">전체상품주문</button>
                         </div>
-                    </div>
                     </div>
                 </div>
                 </div>

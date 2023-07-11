@@ -214,3 +214,15 @@ input[type='tel']:focus {
   box-shadow: none;
   border: 1px solid #000;
 }
+
+
+@media (min-width: 992px){
+  .container {
+    max-width: 1014px;
+  }
+}
+
+.container {
+    min-width: 720px;
+    margin-bottom: 100px;
+}
