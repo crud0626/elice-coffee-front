@@ -3,7 +3,7 @@ import { makeTemplate } from "./common/template.js";
 import g from "./common/common.js";
 
 // const API_URL = "http://kdt-sw-5-team03.elicecoding.com:3001/api/v1/auth/login";
-const API_URL = "http://localhost:3001/api/v1/";
+const API_URL = "http://localhost:3001/api/v1";
 
 const body = document.querySelector("body");
 const dt = new Date();
@@ -118,12 +118,17 @@ const render = () => {
 };
 
 const getUserInfo = () => {
-  fetch(`${API_URL}/auth`)
+  fetch(`${API_URL}/auth`, {
+      credentials: 'include'
+  })
     .then((res) => res.json())
     .then((data) => {
       let result = data;
+      console.log(result);
     });
 };
+
+getUserInfo();
 
 makeTemplate(body, render());
 

@@ -86,6 +86,8 @@ const postLogin = (id, pw) => {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
+    // mode: "cors",
     method: "POST",
     body: JSON.stringify({id, pw}),
   })
@@ -95,8 +97,8 @@ const postLogin = (id, pw) => {
     .then((data) => {
       const { loginToken, msg, isLogin } = data.data;
       if(isLogin) {
-        g.setCookie("loginToken", loginToken.token);
-        g.redirectUserPage("/");
+        // g.setCookie("loginToken", loginToken.token);
+        // g.redirectUserPage("/");
       }
       else {
         alert(msg);
