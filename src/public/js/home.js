@@ -1,4 +1,4 @@
-import { makeTemplate } from "../common/template.js";
+import { makeTemplate } from "./common/template.js";
 const homeHTML = `
 
 <section class="md-products">
@@ -10,7 +10,7 @@ const homeHTML = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img class="img-responsive" src="../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
+                            <img class="img-responsive" src="./assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
 
@@ -37,7 +37,7 @@ const homeHTML = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img class="img-responsive" src="../../assets/thumbnail/brazil-santos.jpg" alt="product-img" />
+                            <img class="img-responsive" src="./assets/thumbnail/brazil-santos.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
 
@@ -64,7 +64,7 @@ const homeHTML = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img class="img-responsive" src="../../assets/thumbnail/colombia-madellin.jpg" alt="product-img" />
+                            <img class="img-responsive" src="./assets/thumbnail/colombia-madellin.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
 
@@ -91,7 +91,7 @@ const homeHTML = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img class="img-responsive" src="../../assets/thumbnail/colombia-supremo.jpg" alt="product-img" />
+                            <img class="img-responsive" src="./assets/thumbnail/colombia-supremo.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
 
@@ -118,7 +118,7 @@ const homeHTML = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img class="img-responsive" src="../../assets/thumbnail/costarica-tarrazu.jpg" alt="product-img" />
+                            <img class="img-responsive" src="./assets/thumbnail/costarica-tarrazu.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
 
@@ -145,7 +145,7 @@ const homeHTML = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img class="img-responsive" src="../../assets/thumbnail/elsalvador-apaneca.jpg" alt="product-img" />
+                            <img class="img-responsive" src="./assets/thumbnail/elsalvador-apaneca.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
                                     <li>

@@ -1,4 +1,4 @@
-import { makeTemplate } from '../common/template.js';
+import { makeTemplate } from './common/template.js';
 const loginHTML = `
 <section class="signin-page account">
         <div class="container">
