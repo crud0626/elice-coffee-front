@@ -19,7 +19,7 @@
  */
 
 let cartData = {
-    _id: '64aa59be2fcdf059ffc9246d',
+    id: '64aa59be2fcdf059ffc9246d',
     name: "Brazil Cerrado",
     categoryId: "testcategoryId",
     price: 3400,
@@ -35,7 +35,7 @@ let cartData = {
 };
 
 let cartData2 = {
-    _id: '71aa59be2fcdf059ffc9246d',
+    id: '71aa59be2fcdf059ffc9246d',
     name: "Brazil Santos",
     categoryId: "testcategoryId2",
     price: 3200,
@@ -51,7 +51,7 @@ let cartData2 = {
 };
 
 let cartData3 = {
-    _id: '83aa59be2fcdf059ffc9246d',
+    id: '83aa59be2fcdf059ffc9246d',
     name: "colombia-supremo",
     categoryId: "testcategoryId3",
     price: 5500,
