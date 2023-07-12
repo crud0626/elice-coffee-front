@@ -145,7 +145,7 @@ userIdInput.addEventListener("input", () => {
 
 
 // 아이디 중복체크
-const idDuplicateCheck = () => {
+const idDuplicateCheck = async () => {
     const userId = userIdInput.value;
     const idCheck = validateRegex.id.test(userId);
 
@@ -161,10 +161,10 @@ const idDuplicateCheck = () => {
     }
 
 
-    const idDupStatus = getIdDupStatus(userId);     // 아이디 중복 상태값 받아오기
-
+    const idDupStatus = await getIdDupStatus(userId);     // 아이디 중복 상태값 받아오기
+    
     // 아이디 중복체크
-    if(idDupStatus) {
+    if(idDupStatus.data) {
         idValidation = true;                        // 아이디 중복체크 통과 
         alert("사용 가능한 아이디입니다.");
     } else {
@@ -172,14 +172,6 @@ const idDuplicateCheck = () => {
         alert("사용 불가능한 아이디입니다.");
     }
 }
-
-// const API_URL = `${ API_END_POINT }auth/register`;
-// fetch(API_URL, {
-//     method: 'POST',
-//     body: JSON.stringify(registerInfo),
-// });  
-
-
 
 // 아이디 중복체크 상태값 반환
 async function getIdDupStatus(id) {
@@ -202,8 +194,8 @@ async function getIdDupStatus(id) {
 
       throw new Error(reason);
     }
-    const result = await res.json();
-    console.log(result);
+
+    const result = res.json();
 
     return result;
 }
@@ -230,11 +222,10 @@ async function postRegister(registerInfo) {
       throw new Error(reason);
     }
     const result = await res.json();
-    console.log(result);
 
     return result;
 }
 
 
-idDuplicateButton.addEventListener("click", idDuplicateCheck);      // 중복체크 버튼튼
+idDuplicateButton.addEventListener("click", idDuplicateCheck);      // 중복체크 버튼
 signinButton.addEventListener("click", regexCheck);                 // 회원가입 버튼
