@@ -4,6 +4,7 @@ import g from "./common/common.js";
 const API_URL = "http://localhost:3001/api/v1";
 
 const body = document.querySelector("body");
+const baskets = JSON.parse(localStorage.getItem("baskets"));
 
 const user = await getUserInfo();
 async function getUserInfo() {
@@ -45,103 +46,114 @@ const renderSection = () => {
 };
 
 const render = () => {
-  return `
-            ${renderSection()}
-            <div class="page-wrapper">
-            <div class="checkout shopping">
-            <div class="container">
-                <div class="row pay-wrap">
-                    <div class="col-md-8">
-                        <div class="block">
-                            <h4 class="widget-title">구매자 정보</h4>
-                            <form class="checkout-form">
-                                <div class="form-group">
-                                    <label for="orderName">이름</label>
-                                    <input type="text" class="form-control" value="${
-                                      user.name
-                                    }" placeholder="" disabled>
+  let totalPrice = 0;
+  let content = `${renderSection()}
+                <div class="page-wrapper">
+                    <div class="checkout shopping">
+                        <div class="container">
+                            <div class="row pay-wrap">
+                                <div class="col-md-8">
+                                    <div class="block">
+                                        <h4 class="widget-title">구매자 정보</h4>
+                                        <form class="checkout-form">
+                                            <div class="form-group">
+                                                <label for="orderName">이름</label>
+                                                <input type="text" class="form-control" value="${
+                                                  user.name
+                                                }" placeholder="" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="orderEamil">이메일</label>
+                                                <input type="text" class="form-control" value="${
+                                                  user.email
+                                                }" placeholder="" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="orderPhone">연락처</label>
+                                                <input type="text" class="form-control" value="${
+                                                  user.phone
+                                                }" placeholder="" disabled>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="block">
+                                        <h4 class="widget-title">받는자 정보</h4>
+                                        <form class="checkout-form">
+                                            <div class="form-group">
+                                                <label for="receiverName">이름</label>
+                                                <input type="text" class="form-control" name="receiverName" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="receiverAddress">배송지 주소</label>
+                                                <input type="text" class="form-control" name="receiverAddress" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="receiverPhone">연락처</label>
+                                                <input type="text" class="form-control" name="receiverPhone" placeholder="">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="orderEamil">이메일</label>
-                                    <input type="text" class="form-control" value="${
-                                      user.email
-                                    }" placeholder="" disabled>
+                            </div>
+                            <div class="row pay-wrap">
+                                <div class="col-md-8">
+                                    <div class="block">
+                                        <h4 class="widget-title">상품 정보</h4>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>제품명</th>
+                                                    <th>수량</th>
+                                                    <th>결제 금액</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                        
+                        
+        `;
+  baskets.forEach((basket) => {
+    content += `
+    
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img src="../${
+                                                          basket.mainImage
+                                                        }" alt="제품사진" />
+                                                    </td>
+                                                    <td>${basket.name}</td>
+                                                    <td>${basket.quantity}</td>
+                                                    <td>${
+                                                      +basket.quantity *
+                                                      +basket.price
+                                                    }</td>
+                                                </tr>
+                                            </tbody>
+            
+                `;
+    totalPrice += +basket.quantity * +basket.price;
+  });
+  content += `
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="orderPhone">연락처</label>
-                                    <input type="text" class="form-control" value="${
-                                      user.phone
-                                    }" placeholder="" disabled>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="block">
-                            <h4 class="widget-title">받는자 정보</h4>
-                            <form class="checkout-form">
-                                <div class="form-group">
-                                    <label for="receiverName">이름</label>
-                                    <input type="text" class="form-control" name="receiverName" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="receiverAddress">배송지 주소</label>
-                                    <input type="text" class="form-control" name="receiverAddress" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="receiverPhone">연락처</label>
-                                    <input type="text" class="form-control" name="receiverPhone" placeholder="">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row pay-wrap">
-                    <div class="col-md-8">
-                        <div class="block">
-
-                            <h4 class="widget-title">상품 정보</h4>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>제품명</th>
-                                        <th>수량</th>
-                                        <th>결제 금액</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="제품사진" />
-                                        </td>
-                                        <td>나이키</td>
-                                        <td>3</td>
-                                        <td>150원</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            </div>
                             <div class="footer text-right">
-                                <p class="total-price">총액 : totalPrice원</p>
-                                <div>
-                                    <button type="button" class="btn btn-main text-center" id="submitBtn">주문하기</button>
-                                </div>
+                                <p class="total-price">총액 : {totalPrice}원</p>
+                            <div>
+                                <button type="button" class="btn btn-main text-center" id="submitBtn">주문하기</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        </div>
-                
-            </div>
-         `;
+  `;
+  content = content.replace("{totalPrice}", totalPrice);
+  return content;
 };
 
 makeTemplate(body, render());
-console.log();
 
-const baskets = JSON.parse(localStorage.getItem("baskets"));
 const forms = document.querySelectorAll("form");
 const submitBtn = document.querySelector("#submitBtn");
 submitBtn.addEventListener("click", async (event) => {
@@ -153,7 +165,9 @@ submitBtn.addEventListener("click", async (event) => {
   const items = baskets;
 
   const receiverName = receiver.querySelector("[name=receiverName]").value;
-  const receiverAddress = receiver.querySelector("[name=receiverAddress]").value;
+  const receiverAddress = receiver.querySelector(
+    "[name=receiverAddress]"
+  ).value;
   const receiverPhone = receiver.querySelector("[name=receiverPhone]").value;
   const orderData = {
     items: items,
@@ -165,32 +179,30 @@ submitBtn.addEventListener("click", async (event) => {
   };
 
   let a = await postOrder(orderData);
-  console.log(a);
 });
 
 async function postOrder(orderData) {
-    const apiUrl = "http://localhost:3001/api/v1";
-    const bodyData = JSON.stringify(orderData);
+  const apiUrl = "http://localhost:3001/api/v1";
+  const bodyData = JSON.stringify(orderData);
 
-    const res = await fetch(`${apiUrl}/orders`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: bodyData
-      });
+  const res = await fetch(`${apiUrl}/orders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: bodyData,
+  });
 
-    // 응답 코드가 4XX 계열일 때 (400, 403 등)
-    if (!res.ok) {
-      const errorContent = await res.json();
-      const { reason } = errorContent;
+  // 응답 코드가 4XX 계열일 때 (400, 403 등)
+  if (!res.ok) {
+    const errorContent = await res.json();
+    const { reason } = errorContent;
 
-      throw new Error(reason);
-    }
-
-    const result = await res.json();
-
-    return result;
+    throw new Error(reason);
   }
 
+  const result = await res.json();
+
+  return result;
+}
