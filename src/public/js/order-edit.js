@@ -1,12 +1,15 @@
+import g from '../js/common/common.js';
 import { makeTemplate } from "./common/template.js";
-import { orderData } from "../mock/order.js";
+import { API_END_POINT } from "../constants/index.js";
 
-const API_END_POINT = "localhost:3000/api/v1/orders";
+/* 렌더링 로직 */
+let orderId = null;
+
 const body = document.querySelector('body');
+init();
 
-/* Mock 데이터로 구현중 */
 function render(orderData) {
-    const { orderAddress, receiver, receiverPhone } = orderData;
+    const { address, receiver, receiverPhone } = orderData;
 
     return `
         <main>
@@ -16,7 +19,7 @@ function render(orderData) {
                         <div class="col-md-6 col-md-offset-3">
                             <div class="block text-center">
                                 <h2 class="text-center withdrawalBtn">주문 정보 수정</h2>
-                                <form id="editForm" class="text-left clearfix">
+                                <form class="text-left clearfix">
                                     <div class="form-group">
                                         <input 
                                             name="name"
@@ -32,7 +35,7 @@ function render(orderData) {
                                             type="text" 
                                             class="form-control"  
                                             placeholder="배송받을 주소를 입력해주세요." 
-                                            value="${orderAddress}"
+                                            value="${address}"
                                         />
                                     </div>
                                     <div class="form-group">
@@ -44,16 +47,15 @@ function render(orderData) {
                                             value="${receiverPhone}"
                                         />
                                     </div>
-                                </form>
-                                <div class="btns">
+                                    <div class="btns">
                                     <button 
                                         type="submit" 
                                         class="btn btn-main text-center" 
-                                        form="editForm"
                                     >
                                         수정 완료
                                     </button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -63,42 +65,59 @@ function render(orderData) {
     `;
 }
 
-// 이벤트 리스너
-function postOrderInfo(newOrderData) {
-    /**
-     * fetch로직으로 변경 필요
-     * fetch(`${API_END_POINT}`, {
-     *   method: "POST",
-     *   body: JSON.stringify(newOrderData)
-     * })
-     */
-    alert("주문 정보가 정상적으로 변경되었습니다.");
-    
-    /* 추후 변경 */
-    window.location.href = `${window.location.origin}/mypage/order`;
-}
-
-/* fetch 로직으로 변경 필요 */
-function getOrder() {
-    const orderId = window.location.pathname.split("/").pop();
+/* 일반 함수 로직 */
+async function init() {
+    const params = new URLSearchParams(window.location.search);
+    orderId = params.get('orderId');
 
     if (!orderId) {
-        window.location.href = window.location.origin;
+        alert("잘못된 접근입니다.");
+        g.redirectUserPage('/');
         return;
     }
 
-    // const data = fetch(`${API_END_POINT}/orders/${orderId}`).then(res => res.json());
-    // if (data) {
+    try {
+        const response = await fetch(`${API_END_POINT}/orders`, { credentials: 'include' }).then(res => res.json());
+        const orderData = response.data.find(item => item.id === orderId);
 
-    // }
-    makeTemplate(body, render(orderData));
+        if (!orderData) {
+            throw new Error("해당 주문내역이 조회되지 않습니다.");
+        }
+        
+        makeTemplate(body, render(orderData));
+
+        const formElem = document.querySelector('form');
+        formElem.addEventListener('submit', handleSubmit);
+    } catch (error) {
+        console.error(error);
+        alert("에러가 발생했습니다.");
+    }
 }
 
-getOrder();
+async function updateOrder(newOrderData) {
+    try {
+        const response = await fetch(`${API_END_POINT}/orders/${orderId}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: 'include',
+            body: JSON.stringify(newOrderData)
+        });
 
-const formElem = document.querySelector('form');
+        if (!response.ok) {
+            throw new Error("알 수 없는 에러가 발생하였습니다.");
+        }
 
-formElem.addEventListener('submit', (event) => {
+        alert("주문 정보가 정상적으로 변경되었습니다.");
+        g.redirectUserPage('/order');
+    } catch (error) {
+        console.error(error);
+        alert("알 수 없는 에러가 발생하였습니다.");
+    }
+}
+
+function handleSubmit(event) {
     event.preventDefault();
 
     const shouldModify = window.confirm("주문을 수정하시겠습니까?");
@@ -106,10 +125,10 @@ formElem.addEventListener('submit', (event) => {
     if (shouldModify) {
         const receiver = event.target.name.value;
         const receiverPhone = event.target.phoneNumber.value;
-        const orderAddress = event.target.address.value;
+        const address = event.target.address.value;
         
-        const newOrderData = { receiver, receiverPhone, orderAddress };
+        const newOrderData = { receiver, receiverPhone, address };
 
-        postOrderInfo(newOrderData);
+        updateOrder(newOrderData);
     }
-});
+}

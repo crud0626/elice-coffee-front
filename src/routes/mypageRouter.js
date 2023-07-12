@@ -12,8 +12,8 @@ router.get('/edit', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/mypage-edit.html'));
 });
 
-router.get('/order', (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/mypage-order.html'));
-});
+// router.get('/order', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../views/mypage-order.html'));
+// });
 
 module.exports = router;

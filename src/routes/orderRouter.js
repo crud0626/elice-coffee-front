@@ -3,11 +3,11 @@ const path = require('path');
 
 const router = express.Router();
 
-router.get('/edit', (req, res) => {
-    res.redirect('/');
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/order-list.html'));
 });
 
-router.get('/edit/:orderId', (req, res) => {
+router.get('/edit', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/order-edit.html'));
 });
 
