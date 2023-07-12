@@ -266,4 +266,5 @@ input[type='tel']:focus {
 .page-404 {
   display: flex;
   align-items: center;
+  justify-content: center;
 }

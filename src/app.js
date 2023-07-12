@@ -19,10 +19,6 @@ app.use(express.static(__dirname + '/public/'));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/home.html'));
 });
-//임시 404
-app.get('/404', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/404.html'));
-});
 
 /* 라우팅 처리 로직 */
 app.use('/register', registerRouter);
@@ -32,6 +28,11 @@ app.use('/cart', cartRouter);
 app.use('/mypage', mypageRouter);
 app.use('/product', productRouter);
 app.use('/order', orderRouter);
+
+// 404
+app.use((req, res) => {
+	res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+});
 
 app.listen(PORT, (err) => {
   if (err) {
