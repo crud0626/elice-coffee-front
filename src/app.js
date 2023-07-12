@@ -14,10 +14,14 @@ const orderRouter = require('./routes/orderRouter');
 const PORT = process.env.PORT || 8080;
 
 // 정적 파일들을 서빙하기 위한 절대 경로 설정
-app.use(express.static(__dirname + "/public/"));
+app.use(express.static(__dirname + '/public/'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/home.html'));
+  res.sendFile(path.join(__dirname, '/views/home.html'));
+});
+//임시 404
+app.get('/404', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/404.html'));
 });
 
 /* 라우팅 처리 로직 */
@@ -27,12 +31,12 @@ app.use('/pay', payRouter);
 app.use('/cart', cartRouter);
 app.use('/mypage', mypageRouter);
 app.use('/product', productRouter);
-app.use('/order', orderRouter)
+app.use('/order', orderRouter);
 
 app.listen(PORT, (err) => {
-    if (err) {
-        return console.log(err);
-    }
+  if (err) {
+    return console.log(err);
+  }
 
-    console.log(`The server is listening on port ${PORT}`);
+  console.log(`The server is listening on port ${PORT}`);
 });

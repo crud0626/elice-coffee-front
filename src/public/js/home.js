@@ -1,4 +1,4 @@
-import { makeTemplate } from "./common/template.js";
+import { makeTemplate } from './common/template.js';
 import g from './common/common.js';
 
 let contentHead = `
@@ -17,14 +17,43 @@ let contentHead = `
                 </div>
             </div>
         </div>
-    </section>
+    </section>    
+    `;
 
-    <section class="products section">
+let contentHead2 = `
+    <!-- product list -->
+    <section class="page-header">
         <div class="container">
-            <div class="row">         
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">커피 용품</h1>
+                        <ol class="breadcrumb">
+                            <!-- <li><a href="#">Home</a></li> -->
+                            <li class="active">커피 용품 목록</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    `;
+
+let contentSlider = `
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="../../../assets/slider/slider-1.jpg"></div>
+        <div class="swiper-slide"><img src="../../../assets/slider/slider-2.jpg"></div>
+        <div class="swiper-slide"><img src="../../../assets/slider/slider-3.jpg"></div>
+        <div class="swiper-slide"><img src="../../../assets/slider/slider-4.jpg"></div>
+      </div>
+    </div>
     `;
 
 let contentTail = `
+        <section class="products section">
+        <div class="container">
+            <div class="row">
             <!-- Modal -->
             <div class="modal product-modal fade" id="product-modal">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -59,19 +88,41 @@ let contentTail = `
             </div>
         </div>
     </section>
-    `;
+
+    <hr>
+<section class="page-write">
+	<div class="container">					
+				<div class="content">
+					<h1 class="page-name">About Coffee</h1>
+					<ol class="">
+						<li class="coffee-write">"커피는 시간과 공간을 초월한 편안함의 청자입니다.<br> 그 향기를 느껴보면 일상에 활력을 불어넣어 새로운 시작으로 당신을 인도합니다."</li>
+            <p></p>
+            <h4 class="coffee-write">
+              지금 이곳에서, 커피를 경험하세요!
+            </h4>
+					</ol>
+				</div>
+	</div>
+</section>
+
+<section class="another-products">
+  <div class="container">
+    <div>
+    </div>
+  </div>
+</section>
+`;
 
 // 상품 목록 데이터 받아오기
-const API_URL = "http://localhost:3001/api/v1/products";
+const API_URL = 'http://localhost:3001/api/v1/products/main/coffee';
 fetch(API_URL)
-    .then( res => res.json())
-    .then( data => {
-        let result = data.data;
+  .then((res) => res.json())
+  .then((data) => {
+    let result = data.data;
 
-        result.forEach( e => {
-
-            // 데이터 수 만큼 목록 생성
-            let contentCenter = `
+    result.forEach((e) => {
+      // 데이터 수 만큼 목록 생성
+      let contentCenter = `
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
@@ -102,23 +153,108 @@ fetch(API_URL)
                             <p class="price">{price}</p>
                         </div>
                     </div>
-                </div>
+                </div>                
             `;
-            contentCenter = contentCenter.replaceAll('{name}', e.name);
-            contentCenter = contentCenter.replaceAll('{discription}', e.description);
-            contentCenter = contentCenter.replaceAll('{price}', g.setParseStringAmount(e.price));
-            contentHead += contentCenter;
-            
-        });
-
-        contentHead += contentTail;
-
-    const body = document.querySelector('body');
-    makeTemplate(body, contentHead);
-
+      contentCenter = contentCenter.replaceAll('{name}', e.name);
+      contentCenter = contentCenter.replaceAll('{discription}', e.description);
+      contentCenter = contentCenter.replaceAll('{price}', g.setParseStringAmount(e.price));
+      contentHead += contentCenter;
     });
 
+    //커피용품
+    const API_URL2 = 'http://localhost:3001/api/v1/products/main/supplies';
+    fetch(API_URL2)
+      .then((res) => res.json())
+      .then((data) => {
+        let result = data.data;
+
+        result.forEach((e) => {
+          // 데이터 수 만큼 목록 생성
+          let contentCenter = `
+                <div class="col-md-4">
+                    <div class="product-item">
+                        <div class="product-thumb">
+                            <span class="bage">Best</span>
+                            <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
+                            <div class="preview-meta">
+                                <ul>
+                                    <!-- <li>
+                                        <span  data-toggle="modal" data-target="#product-modal">
+                                            <i class="tf-ion-ios-search-strong"></i>
+                                        </span>
+                                    </li> -->
+                                    <li>
+                                        <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h4><a href="product-single.html">{name}</a></h4>
+                            <p class="taste">
+                                {discription}
+                            </p>
+                            <p class="price">{price}</p>
+                        </div>
+                    </div>
+                </div>                
+            `;
+          contentCenter = contentCenter.replaceAll('{name}', e.name);
+          contentCenter = contentCenter.replaceAll('{discription}', e.description);
+          contentCenter = contentCenter.replaceAll('{price}', g.setParseStringAmount(e.price));
+          contentHead2 += contentCenter;
+        });
+
+        contentHead2 += contentTail;
+
+        const body = document.querySelector('body');
+        makeTemplate(body, contentSlider + contentHead + contentHead2);
+        new Swiper('.swiper', {
+          // Swiper 옵션을 설정합니다.
+          autoplay: {
+            delay: 3000,
+          },
+          loop: true,
+          slidesPerView: 1,
+          centeredSlides: true,
+          observer: true,
+          observerParents: true,
+        });
+      });
+  });
+
 // const homeHTML = `
+
+// <hr>
+// <section class="page-write">
+// 	<div class="container">
+// 				<div class="content">
+// 					<h1 class="page-name">About Coffee</h1>
+// 					<ol class="">
+// 						<li class="coffee-write">"커피는 시간과 공간을 초월한 편안함의 청자입니다.<br> 그 향기를 느껴보면 일상에 활력을 불어넣어 새로운 시작으로 당신을 인도합니다."</li>
+//             <p></p>
+//             <h4 class="coffee-write">
+//               지금 이곳에서, 커피를 경험하세요!
+//             </h4>
+// 					</ol>
+// 				</div>
+// 	</div>
+// </section>
+
+// <section class="another-products">
+//   <div class="container">
+//     <div>
+//     </div>
+//   </div>
+// </section>
+// `;
+
+// const body = document.querySelector('body');
+// makeTemplate(body, homeHTML);
 
 // <section class="md-products">
 //         <div class="container">
@@ -290,30 +426,3 @@ fetch(API_URL)
 //             </div>
 //         </div>
 //     </section>
-
-// <hr>
-// <section class="page-write">
-// 	<div class="container">					
-// 				<div class="content">
-// 					<h1 class="page-name">About Coffee</h1>
-// 					<ol class="">
-// 						<li class="coffee-write">"커피는 시간과 공간을 초월한 편안함의 청자입니다.<br> 그 향기를 느껴보면 일상에 활력을 불어넣어 새로운 시작으로 당신을 인도합니다."</li>
-//             <p></p>
-//             <h4 class="coffee-write">
-//               지금 이곳에서, 커피를 경험하세요!
-//             </h4>
-// 					</ol>
-// 				</div>
-// 	</div>
-// </section>
-
-// <section class="another-products">
-//   <div class="container">
-//     <div>
-//     </div>
-//   </div>
-// </section>
-// `;
-
-// const body = document.querySelector("body");
-// makeTemplate(body, homeHTML);
