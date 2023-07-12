@@ -2,19 +2,19 @@ const nav = `
     <nav>
         <ul>
             <li class="dropdown">
-                <a href="/product/country">국가별</a>
+                <a href="/product?categoryId=country">국가별</a>
             </li>
 
             <li class="dropdown">
-                <a href="/product/blend">블랜드</a>
+                <a href="/product?categoryId=blend">블랜드</a>
             </li>
 
             <li class="dropdown">
-                <a href="/product/drip">드립</a>
+                <a href="/product?categoryId=drip">드립</a>
             </li>
 
             <li class="dropdown">
-                <a href="/product/supplies">커피용품</a>                
+                <a href="/product?categoryId=supplies">커피용품</a>                
             </li>
         </ul>
     </nav>
