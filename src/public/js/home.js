@@ -115,12 +115,12 @@ fetch(API_URL)
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <a href="/product/${e.productId}"><img class="img-responsive" src="../../../assets/thumbnail/${e.categoryId}/${e.id}/${e.mainImage}" alt="product-img"/></a>
+                            <a href="/product/${e.id}"><img class="img-responsive" src="../../../assets/thumbnail/${e.categoryId}/${e.id}/${e.mainImage}" alt="product-img"/></a>
                             <div class="preview-meta">
                             </div>
                         </div>
                         <div class="product-content">
-                            <h4><a href="product-single.html">{name}</a></h4>
+                            <h4><a href="product/${e.id}">{name}</a></h4>
                             <p class="taste">
                                 {discription}
                             </p>
@@ -154,7 +154,7 @@ fetch(API_URL)
                             </div>
                         </div>
                         <div class="product-content">
-                            <h4><a href="product-single.html">{name}</a></h4>
+                            <h4><a href="product/${e.id}">{name}</a></h4>
                             <p class="taste">
                                 {discription}
                             </p>
