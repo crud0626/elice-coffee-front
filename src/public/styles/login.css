@@ -1,4 +1,12 @@
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
+section {
+  padding: 0;
+}
 
 .account .block {
   background-color: #fff;
@@ -84,4 +92,12 @@
 
 .page-404 .btn-main {
   margin-top: 40px;
+}
+
+.text-center h2 {
+  margin-bottom: 40px;
+}
+
+.text-center button {
+  margin-top: 10px;
 }

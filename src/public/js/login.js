@@ -4,7 +4,8 @@ import { API_END_POINT } from "../constants/index.js";
 const API_URL = API_END_POINT;
 
 const loginHTML = `
-<section class="signin-page account">
+    <main>
+      <section class="signin-page account">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
@@ -28,6 +29,7 @@ const loginHTML = `
             </div>
         </div>
     </section>
+  </main>
 `;
 
 const body = document.querySelector("body");
