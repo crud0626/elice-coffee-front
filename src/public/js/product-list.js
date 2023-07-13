@@ -26,33 +26,33 @@ if (categoryId === "country") {
 // 마크업
 let contentHead = `
     <!-- product list -->
-    <section class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="content">
-                        <h1 class="page-name">${ category1 }</h1>
-                        <ol class="breadcrumb">
-                            <li><a href="/">Home</a></li>
-                            <li class="active">${ category2 }</li>
-                        </ol>
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content">
+                            <h1 class="page-name">${ category1 }</h1>
+                            <ol class="breadcrumb">
+                                <li><a href="/">Home</a></li>
+                                <li class="active">${ category2 }</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="products section">
-        <div class="container">
-            <div class="row">         
+        <section class="products section">
+            <div class="container">
+                <div class="row">         
 `;
 
 let contentTail = `
-           
-
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 `;
 
 // 상품 리스트 생성
