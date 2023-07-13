@@ -77,7 +77,6 @@ fetch(API_URL)
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <span class="bage">Best</span>
                             <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>

@@ -44,9 +44,11 @@
   display: block;
 }
 
-.page-name,
-.coffee-write {
+.page-name {
   text-align: start;
+}
+.coffee-write {
+  text-align: end;
 }
 
 .product-item {

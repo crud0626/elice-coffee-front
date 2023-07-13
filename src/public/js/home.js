@@ -64,11 +64,6 @@ let contentTail = `
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <div class="modal-image">
-                                        <img class="img-responsive" src="images/shop/products/modal-product.jpg" alt="product-img" />
-                                    </div>
-                                </div>
                                 <div class="col-md-4 col-sm-6 col-xs-12">
                                     <div class="product-short-details">
                                         <h2 class="product-title">GM Pendant, Basalt Grey</h2>
@@ -94,7 +89,7 @@ let contentTail = `
 <section class="page-write">
 	<div class="container">					
 				<div class="content">
-					<h1 class="page-name">About Coffee</h1>
+					<h1 class="coffee-write">About Coffee</h1>
 					<ol class="">
 						<li class="coffee-write">"커피는 시간과 공간을 초월한 편안함의 청자입니다.<br> 그 향기를 느껴보면 일상에 활력을 불어넣어 새로운 시작으로 당신을 인도합니다."</li>
             <p></p>
@@ -120,23 +115,8 @@ fetch(API_URL)
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <span class="bage">Best</span>
-                            <a href=""> <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" /> </a>
+                            <a href="/product/${e.productId}"><img class="img-responsive" src="../../../assets/thumbnail/${e.categoryId}/${e.id}/${e.mainImage}" alt="product-img"/></a>
                             <div class="preview-meta">
-                                <ul>
-                                    <!-- <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li> -->
-                                    <!-- <li>
-                                        <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-                                    </li> -->
-                                </ul>
                             </div>
                         </div>
                         <div class="product-content">
@@ -155,6 +135,7 @@ fetch(API_URL)
       contentHead += contentCenter;
     });
 
+
     //커피용품
     const API_URL2 = 'http://localhost:3001/api/v1/products/main/supplies';
     fetch(API_URL2)
@@ -168,22 +149,8 @@ fetch(API_URL)
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <a href="/products/:productid"> <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" /> </a>
+                            <a href="/product/${e.id}"> <img class="img-responsive" src="../../../assets/thumbnail/${e.categoryId}/${e.id}/${e.mainImage}" alt="product-img" /> </a>
                             <div class="preview-meta">
-                                <ul>
-                                    <!-- <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li> -->
-                                    <!-- <li>
-                                        <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-                                    </li> -->
-                                </ul>
                             </div>
                         </div>
                         <div class="product-content">
