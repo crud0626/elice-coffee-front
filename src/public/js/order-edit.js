@@ -78,7 +78,7 @@ async function init() {
 
     try {
         const response = await fetch(`${API_END_POINT}/orders`, { credentials: 'include' }).then(res => res.json());
-        const orderData = response.data.find(item => item.id === orderId);
+        const orderData = response.data.find(item => item._id === orderId);
 
         if (!orderData) {
             throw new Error("해당 주문내역이 조회되지 않습니다.");
@@ -127,7 +127,7 @@ function handleSubmit(event) {
         const receiverPhone = event.target.phoneNumber.value;
         const address = event.target.address.value;
         
-        const newOrderData = { receiver, receiverPhone, address };
+        const newOrderData = { receiver, receiverPhone, address, isOrderCancel: false };
 
         updateOrder(newOrderData);
     }
