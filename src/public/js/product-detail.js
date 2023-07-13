@@ -88,6 +88,7 @@ fetch(API_URL)
           check: false,
           _id: _id,
         };
+
         const baskets = JSON.parse(localStorage.getItem("baskets")) || []; // 로컬 장바구니 불러오기, 데이터 없으면 배열로 장바구니 생성.
         baskets.push(cartItem);
         localStorage.setItem("baskets", JSON.stringify(baskets));
@@ -112,7 +113,32 @@ fetch(API_URL)
       document.querySelector(".buy-button").lastElementChild;
     directPayButton.addEventListener("click", function () {
       if (productOption.value !== "*") {
-        location.href = "/pay";
+
+        const option =
+          document.querySelector(".option-name").firstElementChild.textContent;
+        const quantity = Number(
+          document.querySelector(".option-count").firstElementChild.value
+        );
+        const cartItem = {
+            categoryId: categoryId,
+            id: id,
+            description: description,
+            keyWord: keyWord,
+            name: name,
+            mainImage: mainImage,
+            subImage: subImage,
+            option: option,
+            price: price,
+            quantity: quantity,
+            check: false,
+            _id: _id,
+          };
+
+        const directPay = []
+        directPay.push(cartItem);
+        localStorage.setItem("directPay", JSON.stringify(directPay));
+        location.href = "/pay?direct=true";
+
       } else {
         alert("상품을 선택해주세요.");
         return;
@@ -300,25 +326,6 @@ function addItem(data) {
     `;
 }
 
-// function modal() {
-//     <div class="modal">
-//         <div class="modal-container">
-//             <h2>장바구니 담기</h2>
-//             <button class="close-modal">닫기</button>
-//             <div class="modal-content">
-//                 <p>
-//                     <strong>상품이 장바구니에 담겼습니다.</strong><br>
-//                     </br>
-//                     바로 확인하시겠습니까?
-//                 </p>
-//             </div>
-//             <div class="modal-button">
-//                 <button>취소</button>
-//                 <button>확인</button>
-//             </div>
-//         </div>
-//     </div>
-// }
 
 // 수량 및 옵션 선택에 따라 총 가격을 업데이트
 function updateTotalPrice(price) {
