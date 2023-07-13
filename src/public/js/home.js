@@ -1,5 +1,6 @@
-import { makeTemplate } from './common/template.js';
-import g from './common/common.js';
+import { makeTemplate } from "./common/template.js";
+import g from "./common/common.js";
+import { API_END_POINT } from "../constants/index.js";
 
 let contentHead = `
     <!-- product list -->
@@ -103,8 +104,8 @@ let contentTail = `
 `;
 
 // 상품 목록 데이터 받아오기
-const API_URL = 'http://localhost:3001/api/v1/products/main/coffee';
-fetch(API_URL)
+const API_URL = API_END_POINT; // 'http://localhost:3001/api/v1/products/main/coffee';
+fetch(`${API_URL}/products/main/coffee`)
   .then((res) => res.json())
   .then((data) => {
     let result = data.data;
@@ -124,21 +125,22 @@ fetch(API_URL)
                             <p class="taste">
                                 {discription}
                             </p>
-                            <p class="price">₩{price}</p>
+                            <p class="price">{price}원</p>
                         </div>
                     </div>
                 </div>                
             `;
-      contentCenter = contentCenter.replaceAll('{name}', e.name);
-      contentCenter = contentCenter.replaceAll('{discription}', e.description);
-      contentCenter = contentCenter.replaceAll('{price}', g.setParseStringAmount(e.price));
+      contentCenter = contentCenter.replaceAll("{name}", e.name);
+      contentCenter = contentCenter.replaceAll("{discription}", e.description);
+      contentCenter = contentCenter.replaceAll(
+        "{price}",
+        g.setParseStringAmount(e.price)
+      );
       contentHead += contentCenter;
     });
 
-
     //커피용품
-    const API_URL2 = 'http://localhost:3001/api/v1/products/main/supplies';
-    fetch(API_URL2)
+    fetch(`${API_URL}/products/main/supplies`)
       .then((res) => res.json())
       .then((data) => {
         let result = data.data;
@@ -158,22 +160,28 @@ fetch(API_URL)
                             <p class="taste">
                                 {discription}
                             </p>
-                            <p class="price">₩{price}</p>
+                            <p class="price">{price}원</p>
                         </div>
                     </div>
                 </div>                
             `;
-          contentCenter = contentCenter.replaceAll('{name}', e.name);
-          contentCenter = contentCenter.replaceAll('{discription}', e.description);
-          contentCenter = contentCenter.replaceAll('{price}', g.setParseStringAmount(e.price));
+          contentCenter = contentCenter.replaceAll("{name}", e.name);
+          contentCenter = contentCenter.replaceAll(
+            "{discription}",
+            e.description
+          );
+          contentCenter = contentCenter.replaceAll(
+            "{price}",
+            g.setParseStringAmount(e.price)
+          );
           contentHead2 += contentCenter;
         });
 
         contentHead2 += contentTail;
 
-        const body = document.querySelector('body');
+        const body = document.querySelector("body");
         makeTemplate(body, contentSlider + contentHead + contentHead2);
-        new Swiper('.swiper', {
+        new Swiper(".swiper", {
           // Swiper 옵션을 설정합니다.
           autoplay: {
             delay: 3000,
@@ -204,185 +212,4 @@ fetch(API_URL)
 // 				</div>
 // 	</div>
 // </section>
-
-// <section class="another-products">
-//   <div class="container">
-//     <div>
-//     </div>
-//   </div>
-// </section>
 // `;
-
-// const body = document.querySelector('body');
-// makeTemplate(body, homeHTML);
-
-// <section class="md-products">
-//         <div class="container">
-//             <div class="row">
-//                 <h2 class="md-best">MD 추천 상품</h2>
-//                 <hr>
-//                 <br>
-//                 <div class="col-md-4">
-//                     <div class="product-item">
-//                         <div class="product-thumb">
-//                             <img class="img-responsive" src="./assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
-//                             <div class="preview-meta">
-//                                 <ul>
-
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-//                                         </a>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                         <div class="product-content">
-//                             <h4><a href="product-single.html">Brazil Cerrado</a></h4>
-//                             <p class="taste">
-//                                 #적절한 바디와 너티함<br>
-//                                 #고소하고 무난한 맛을 찾으시는 분
-//                             </p>
-//                             <p class="price">₩3,400</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <div class="product-item">
-//                         <div class="product-thumb">
-//                             <img class="img-responsive" src="./assets/thumbnail/brazil-santos.jpg" alt="product-img" />
-//                             <div class="preview-meta">
-//                                 <ul>
-
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-//                                         </a>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                         <div class="product-content">
-//                             <h4><a href="product-single.html">Brazil Santos</a></h4>
-//                             <p class="taste">
-//                                 #은은한 산미와 너티의 마일드함<br>
-//                                 #부드럽고 마일드한 맛을 찾으시는 분
-//                             </p>
-//                             <p class="price">₩3,200</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <div class="product-item">
-//                         <div class="product-thumb">
-//                             <img class="img-responsive" src="./assets/thumbnail/colombia-madellin.jpg" alt="product-img" />
-//                             <div class="preview-meta">
-//                                 <ul>
-
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-//                                         </a>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                         <div class="product-content">
-//                             <h4><a href="product-single.html">Colombia Madellin</a></h4>
-//                             <p class="taste">
-//                                 #호두의 고소함, 코코아의 단맛<br>
-//                                 #기분 좋은 바디감과 단맛을 원하시는 분
-//                             </p>
-//                             <p class="price">₩4,200</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <div class="product-item">
-//                         <div class="product-thumb">
-//                             <img class="img-responsive" src="./assets/thumbnail/colombia-supremo.jpg" alt="product-img" />
-//                             <div class="preview-meta">
-//                                 <ul>
-
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-//                                         </a>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                         <div class="product-content">
-//                             <h4><a href="product-single.html">Colombia Supremo</a></h4>
-//                             <p class="taste">
-//                                 #은은한 허브향과 단맛의 조화<br>
-//                                 #어디에나 어울리는 커피를 찾으시는 분
-//                             </p>
-//                             <p class="price">₩4,500</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <div class="product-item">
-//                         <div class="product-thumb">
-//                             <img class="img-responsive" src="./assets/thumbnail/costarica-tarrazu.jpg" alt="product-img" />
-//                             <div class="preview-meta">
-//                                 <ul>
-
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
-//                                         </a>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                         <div class="product-content">
-//                             <h4><a href="product-single.html">Costarica Tarrazu</a></h4>
-//                             <p class="taste">
-//                                 #<br>
-//                                 #
-//                             </p>
-//                             <p class="price">₩</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <div class="product-item">
-//                         <div class="product-thumb">
-//                             <img class="img-responsive" src="./assets/thumbnail/elsalvador-apaneca.jpg" alt="product-img" />
-//                             <div class="preview-meta">
-//                                 <ul>
-//                                     <li>
-//                                         <span data-toggle="modal" data-target="#product-modal">
-//                                             <i class="tf-ion-ios-search-strong"></i>
-//                                         </span>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#"><i class="tf-ion-ios-heart"></i></a>
-//                                     </li>
-//                                     <li>
-//                                         <a href="#!"><i class="tf-ion-android-cart"></i></a>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                         <div class="product-content">
-//                             <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-//                             <p class="price">₩</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </section>
