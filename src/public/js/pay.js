@@ -4,42 +4,13 @@ import g from "./common/common.js";
 
 const API_URL = API_END_POINT;
 
-// let cartData = {
-//   _id: "64aed1b133874d54264a30b0",
-//   id: "honduras-sanandres",
-//   name: "온두라스 산안드레스",
-//   categoryId: "country",
-//   price: 4600,
-//   keyWord: ["바디감", "달콤함"],
-//   description:
-//     "잘 구운 토스트의 고소함과 무화과향이 은은하게 감돌고 부드러운 목 넘김이 더없이 기분 좋은 순간",
-//   mainImage: "honduras-sanandres.jpg",
-//   subImage: ["section-1.jpg", "section-2.jpg"],
-//   quantity: 1,
-//   option: "200g",
-// };
-
-// let cartData2 = {
-//   _id: "64aed1be33874d54264a30b2",
-//   id: "elsalvador-apaneca",
-//   name: "엘살바도르 아파네카",
-//   categoryId: "country",
-//   price: 4600,
-//   keyWord: ["깔끔함", "복숭아"],
-//   description: "부담없이 부드럽고 깔끔하게 즐길 수 있는 커피",
-//   mainImage: "elsalvador-apaneca.jpg",
-//   subImage: ["section-1.jpg", "section-2.jpg"],
-//   quantity: 2,
-//   option: "200g",
-// };
-
-// const samplebaskets = JSON.parse(localStorage.getItem("baskets")) || []; // 로컬 장바구니 불러오기, 데이터 없으면 배열로 장바구니 생성.
-// samplebaskets.push(cartData);
-// samplebaskets.push(cartData2);
-// localStorage.setItem("baskets", JSON.stringify(samplebaskets));
-
 const body = document.querySelector("body");
-const baskets = JSON.parse(localStorage.getItem("baskets")); // 장바구니
+const urlParams = new URLSearchParams(window.location.search);
+const directFlag = urlParams.get("direct");
+// 바로 결제 / 장바구니에서 결제 분기
+const baskets = !!directFlag
+  ? JSON.parse(localStorage.getItem("directPay"))
+  : JSON.parse(localStorage.getItem("baskets")); // 장바구니
 let totalPrice = 0; // 총 주문 금액 저장
 
 const user = await getUserInfo();
