@@ -1,15 +1,51 @@
 import { makeTemplate } from "./common/template.js";
+import { API_END_POINT } from "../constants/index.js";
 import g from "./common/common.js";
 
-const API_URL = "http://localhost:3001/api/v1";
+const API_URL = API_END_POINT;
+
+// let cartData = {
+//   _id: "64aed1b133874d54264a30b0",
+//   id: "honduras-sanandres",
+//   name: "온두라스 산안드레스",
+//   categoryId: "country",
+//   price: 4600,
+//   keyWord: ["바디감", "달콤함"],
+//   description:
+//     "잘 구운 토스트의 고소함과 무화과향이 은은하게 감돌고 부드러운 목 넘김이 더없이 기분 좋은 순간",
+//   mainImage: "honduras-sanandres.jpg",
+//   subImage: ["section-1.jpg", "section-2.jpg"],
+//   quantity: 1,
+//   option: "200g",
+// };
+
+// let cartData2 = {
+//   _id: "64aed1be33874d54264a30b2",
+//   id: "elsalvador-apaneca",
+//   name: "엘살바도르 아파네카",
+//   categoryId: "country",
+//   price: 4600,
+//   keyWord: ["깔끔함", "복숭아"],
+//   description: "부담없이 부드럽고 깔끔하게 즐길 수 있는 커피",
+//   mainImage: "elsalvador-apaneca.jpg",
+//   subImage: ["section-1.jpg", "section-2.jpg"],
+//   quantity: 2,
+//   option: "200g",
+// };
+
+// const samplebaskets = JSON.parse(localStorage.getItem("baskets")) || []; // 로컬 장바구니 불러오기, 데이터 없으면 배열로 장바구니 생성.
+// samplebaskets.push(cartData);
+// samplebaskets.push(cartData2);
+// localStorage.setItem("baskets", JSON.stringify(samplebaskets));
 
 const body = document.querySelector("body");
-const baskets = JSON.parse(localStorage.getItem("baskets"));
+const baskets = JSON.parse(localStorage.getItem("baskets")); // 장바구니
+let totalPrice = 0; // 총 주문 금액 저장
 
 const user = await getUserInfo();
+
 async function getUserInfo() {
-  const apiUrl = "http://localhost:3001/api/v1";
-  const res = await fetch(`${apiUrl}/auth`, {
+  const res = await fetch(`${API_URL}/auth`, {
     credentials: "include",
   });
 
@@ -24,6 +60,7 @@ async function getUserInfo() {
 
   return result.data;
 }
+
 // section 영역을 렌더링 한다.
 const renderSection = () => {
   return `
@@ -45,9 +82,10 @@ const renderSection = () => {
             `;
 };
 
+// body 부분
 const render = () => {
-  let totalPrice = 0;
-  let content = `${renderSection()}
+  let content = `
+                ${renderSection()}
                 <div class="page-wrapper">
                     <div class="checkout shopping">
                         <div class="container">
@@ -109,30 +147,30 @@ const render = () => {
                                                     <th></th>
                                                 </tr>
                                             </thead>
-                        
-                        
-        `;
+                    `;
   baskets.forEach((basket) => {
     content += `
     
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <img src="../${
-                                                          basket.mainImage
-                                                        }" alt="제품사진" />
+                                                        <img src="../assets/thumbnail/${
+                                                          basket.categoryId
+                                                        }/${basket.id}/${
+      basket.mainImage
+    }" alt="제품사진" />
                                                     </td>
                                                     <td>${basket.name}</td>
                                                     <td>${basket.quantity}</td>
-                                                    <td>${
-                                                      +basket.quantity *
-                                                      +basket.price
-                                                    }</td>
+                                                    <td>${g.setParseStringAmount(
+                                                      basket.quantity *
+                                                        basket.price
+                                                    )}</td>
                                                 </tr>
                                             </tbody>
             
                 `;
-    totalPrice += +basket.quantity * +basket.price;
+    totalPrice += basket.quantity * basket.price;
   });
   content += `
                                         </table>
@@ -148,7 +186,7 @@ const render = () => {
                     </div>
                 </div>
   `;
-  content = content.replace("{totalPrice}", totalPrice);
+  content = content.replace("{totalPrice}", g.setParseStringAmount(totalPrice));
   return content;
 };
 
@@ -161,7 +199,7 @@ submitBtn.addEventListener("click", async (event) => {
 
   // Get the input elements
   const [_, receiver] = forms;
-  // 상품 장바구니 담을거
+  // 상품 장바구니 담을 변수
   const items = baskets;
 
   const receiverName = receiver.querySelector("[name=receiverName]").value;
@@ -171,27 +209,29 @@ submitBtn.addEventListener("click", async (event) => {
   const receiverPhone = receiver.querySelector("[name=receiverPhone]").value;
   const orderData = {
     items: items,
-    itemTotal: 83423,
+    itemTotal: totalPrice,
     userId: user.id,
     address: receiverAddress,
     receiver: receiverName,
     receiverPhone: receiverPhone,
   };
 
-  let a = await postOrder(orderData);
+  let postResult = await postOrder(orderData);
+  // 주문완료시 페이지 이동 필요
+  if (!postResult.error) {
+    g.redirectUserPage(`/pay/complete?id=${postResult.data._id}`);
+  }
+  throw new Error(postResult.error);
 });
 
 async function postOrder(orderData) {
-  const apiUrl = "http://localhost:3001/api/v1";
-  const bodyData = JSON.stringify(orderData);
-
-  const res = await fetch(`${apiUrl}/orders`, {
+  const res = await fetch(`${API_URL}/orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: bodyData,
+    body: JSON.stringify(orderData),
   });
 
   // 응답 코드가 4XX 계열일 때 (400, 403 등)
