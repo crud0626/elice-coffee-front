@@ -1,6 +1,7 @@
 import { makeTemplate } from "./common/template.js";
 
 const content = `
+            <main>
                 <div class="container">
                     <div>
                         <img src="/assets/registerComplete.png">
@@ -19,6 +20,7 @@ const content = `
                         </span>
                     </div>
                 </div>
+            </main>
 `;
 
 const body = document.querySelector('body');

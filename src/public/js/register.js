@@ -3,6 +3,7 @@ import { validateRegex } from "/constants/index.js"; // 정규표현식
 import { makeTemplate } from "./common/template.js";
 
 const content = `
+  <main>
     <section class="signin-page account">
         <div class="container">
             <div class="row">
@@ -40,6 +41,7 @@ const content = `
             </div>
         </div>
     </section>
+  </main>
 `;
 
 const body = document.querySelector("body");
