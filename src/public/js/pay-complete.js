@@ -23,7 +23,19 @@ async function getOrderInfo() {
 
   const result = await res.json();
 
-  // 로컬스토리지 비우기
+  // 주문 완료한 상품 데이터들은 장바구니 목록에서 제거
+  const baskets = JSON.parse(localStorage.getItem("baskets"));
+  const products = result.data[0].items;
+  const productIds = [];
+  products.forEach((x) => {
+    productIds.push(x.id);
+  });
+  localStorage.setItem(
+    "baskets",
+    JSON.stringify(baskets.filter((x) => !productIds.includes(x.id)))
+  );
+
+  // 주문 완료한 장바구니 데이터는 로컬스토리지 비우기
   window.localStorage.removeItem(urlParams.get("name"));
 
   return result.data;
