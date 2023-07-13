@@ -132,6 +132,9 @@ function updateTotalPrice(quantity, price, priceAmount=0) {      // 수량, 가�
     totalAmountElement.textContent = totalAmount.toLocaleString() +"원";
     totalShippingFeeElement.textContent = fee.toLocaleString() + "원";
     totalPaymentElement.textContent = totalPaymentAmount.toLocaleString() + "원";
+    document.querySelectorAll('#product-fee').forEach(data => {
+        data.textContent = fee.toLocaleString() + "원";
+    })
 }
 
 
@@ -149,9 +152,11 @@ function cartItemCreate(cartItem) {
 
     const localePrice = price.toLocaleString() + "원";
     const localePriceAmount = (quantity * price).toLocaleString() + "원";
-    const localFee = fee.toLocaleString() + "원"
+    const localeFee = fee.toLocaleString() + "원"
 
-    return `<tr>
+    let content = ``;
+        content = `
+            <tr>
                 <td>
                     <input type="checkbox"  class="product-checkbox-input">
                 </td>
@@ -175,10 +180,12 @@ function cartItemCreate(cartItem) {
                         </span>
                     </div>
                 </td>
-                <td>${ localFee }</td>
+                <td id="product-fee">${ localeFee }</td>
                 <td id="product-amount">${ localePriceAmount }</td>
             </tr>
-            `;
+        `;
+    
+    return content;
 }
 
 // 장바구니 리스트 생성
