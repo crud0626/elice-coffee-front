@@ -6,7 +6,7 @@ function logout() {
     if (token) {
         g.deleteCookie("loginToken");
         window.alert("로그아웃 되었습니다.");
-        g.redirectUserPage('/login');
+        g.redirectUserPage('/');
     }
 }
 

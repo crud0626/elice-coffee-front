@@ -1,4 +1,4 @@
-import g from '../js/common/common.js';
+import g from './common/common.js';
 import { validateRegex, API_END_POINT } from "../constants/index.js";
 import { makeTemplate } from "./common/template.js";
 
@@ -107,7 +107,6 @@ async function init() {
         formElem.addEventListener('submit', handleSubmit);
 
         const withdrawalBtn = document.querySelector('#withdrawalBtn');
-        console.log(withdrawalBtn);
         withdrawalBtn.addEventListener('click', handleWithdrawal);
     } catch(err) {
         console.error(err);
@@ -147,13 +146,12 @@ async function handleSubmit(event) {
     event.preventDefault();
     
     const email = event.target.email.value;
-    const address = event.target.address.value;
     const phone = event.target.phone.value;
     const newPassword = event.target.newPassword.value;
     const confirmNewPassword = event.target.confirmNewPassword.value;
 
     try {
-        const newUserInfo = { email, address, phone };
+        const newUserInfo = { email, phone };
 
         if (newPassword || confirmNewPassword) {
             const isValid = validatePassword(newPassword, confirmNewPassword);
@@ -194,7 +192,8 @@ async function handleWithdrawal() {
             throw new Error("알 수 없는 에러가 발생했습니다.");
         }
 
-        alert("회원 탈퇴 신청이 완료되었습니다.\n이용해주셔서 감사합니다.");
+        g.deleteCookie("loginToken");
+        window.alert("회원 탈퇴 신청이 완료되었습니다.\n이용해주셔서 감사합니다.");
         g.redirectUserPage('/');
     } catch (error) {
         console.error(error);
