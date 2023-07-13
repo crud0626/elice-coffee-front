@@ -89,7 +89,7 @@ let contentTail = `
 <section class="page-write">
 	<div class="container">					
 				<div class="content">
-					<h1 class="coffee-write">About Coffee</h1>
+					<h1 class="coffee-write">About Elice Coffee</h1>
 					<ol class="">
 						<li class="coffee-write">"커피는 시간과 공간을 초월한 편안함의 청자입니다.<br> 그 향기를 느껴보면 일상에 활력을 불어넣어 새로운 시작으로 당신을 인도합니다."</li>
             <p></p>
