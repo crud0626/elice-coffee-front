@@ -90,7 +90,17 @@ fetch(API_URL)
         };
 
         const baskets = JSON.parse(localStorage.getItem("baskets")) || []; // 로컬 장바구니 불러오기, 데이터 없으면 배열로 장바구니 생성.
-        baskets.push(cartItem);
+        const index = baskets.findIndex(data => data.id == cartItem.id);    // 장바구니에 중복된 상품이 있는지 확인
+        
+        if (index !== -1) {   // 중복 상품이 있을 경우 수량 up
+          const targetItem = baskets[index];
+          targetItem.quantity += quantity;
+          baskets[index] = targetItem;
+
+        } else {              // 중복 상품이 없을 경우 그대로 장바구니에 넣기
+          baskets.push(cartItem);
+        }
+
         localStorage.setItem("baskets", JSON.stringify(baskets));
 
         modal.style.display = "flex";
