@@ -87,7 +87,7 @@
    font-weight: 300;
    display: inline-block;
  }
- .product-item .product-thumb:before {
+ /* .product-item .product-thumb:before {
    transition: 0.3s all;
    opacity: 0;
    background: rgba(0, 0, 0, 0.6);
@@ -97,7 +97,7 @@
    right: 0;
    left: 0;
    bottom: 0;
- }
+ } */
  .product-item .product-thumb .preview-meta {
    position: absolute;
    text-align: center;

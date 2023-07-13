@@ -8,7 +8,7 @@ let contentHead = `
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name">MD추천상품</h1>
+                        <h1 class="page-name">🥇 MD추천상품</h1>
                         <ol class="breadcrumb">
                             <!-- <li><a href="#">Home</a></li> -->
                             <li class="active">커피 상품 목록</li>
@@ -26,8 +26,9 @@ let contentHead2 = `
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <hr>
                     <div class="content">
-                        <h1 class="page-name">커피 용품</h1>
+                        <h1 class="page-name">🛍️ 커피 용품</h1>
                         <ol class="breadcrumb">
                             <!-- <li><a href="#">Home</a></li> -->
                             <li class="active">커피 용품 목록</li>
@@ -104,13 +105,6 @@ let contentTail = `
 				</div>
 	</div>
 </section>
-
-<section class="another-products">
-  <div class="container">
-    <div>
-    </div>
-  </div>
-</section>
 `;
 
 // 상품 목록 데이터 받아오기
@@ -127,7 +121,7 @@ fetch(API_URL)
                     <div class="product-item">
                         <div class="product-thumb">
                             <span class="bage">Best</span>
-                            <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
+                            <a href=""> <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" /> </a>
                             <div class="preview-meta">
                                 <ul>
                                     <!-- <li>
@@ -135,13 +129,13 @@ fetch(API_URL)
                                             <i class="tf-ion-ios-search-strong"></i>
                                         </span>
                                     </li> -->
-                                    <li>
+                                    <!-- <li>
                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -150,7 +144,7 @@ fetch(API_URL)
                             <p class="taste">
                                 {discription}
                             </p>
-                            <p class="price">{price}</p>
+                            <p class="price">₩{price}</p>
                         </div>
                     </div>
                 </div>                
@@ -174,8 +168,7 @@ fetch(API_URL)
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <span class="bage">Best</span>
-                            <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" />
+                            <a href="/products/:productid"> <img class="img-responsive" src="../../../assets/thumbnail/brazil-cerrado.jpg" alt="product-img" /> </a>
                             <div class="preview-meta">
                                 <ul>
                                     <!-- <li>
@@ -183,13 +176,13 @@ fetch(API_URL)
                                             <i class="tf-ion-ios-search-strong"></i>
                                         </span>
                                     </li> -->
-                                    <li>
+                                    <!-- <li>
                                         <a href="#!"><i class="fa-solid fa-heart" style="color: black;"></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#!"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -198,7 +191,7 @@ fetch(API_URL)
                             <p class="taste">
                                 {discription}
                             </p>
-                            <p class="price">{price}</p>
+                            <p class="price">₩{price}</p>
                         </div>
                     </div>
                 </div>                
