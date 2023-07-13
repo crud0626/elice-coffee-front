@@ -2,7 +2,6 @@
 
 header {
   position: sticky;
-  z-index: 1;
   /* width: 100%; */
   top: 0;
   left: 0;
@@ -13,6 +12,7 @@ header {
   padding: 0 15px;
   background-color: #7b6d66;
   height: 50px;
+  z-index: 99;
 }
 
 header h1 {
@@ -27,6 +27,10 @@ header a {
   margin-left: 10px;
 }
 
+header a:last-child {
+  margin-right: 10px;
+}
+
 header a div {
   padding-top: 10px;
 }
@@ -35,36 +39,8 @@ a:hover {
   text-decoration: underline;
 }
 
-.search-container {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  max-width: 300px;
-  margin-top: 8px;
-}
-
-.search-container input[type='text'] {
-  flex-grow: 1;
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-  height: 30px;
-}
-
-.search-container button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 3px;
-  background-color: #7a665c;
-  color: #fff;
-  cursor: pointer;
-  height: 30px;
-}
-
 nav {
   position: sticky;
-  z-index: 1;
   top: 50px;
   left: 0;
   right: 0;
@@ -76,6 +52,7 @@ nav {
   background-color: #7b6d66;
   height: 50px;
   /* width: 100%; */
+  z-index: 99;
 }
 
 nav ul {

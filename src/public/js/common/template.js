@@ -1,5 +1,5 @@
 import { nav } from '../components/nav.js';
-import { header } from '../components/header.js';
+import { header, logout } from '../components/header.js';
 import { footer } from '../components/footer.js';
 
 /**
@@ -11,6 +11,8 @@ function makeTemplate(body, contentsArea) {
     body.insertAdjacentHTML('beforeend', nav);
     body.insertAdjacentHTML('beforeend', contentsArea)
     body.insertAdjacentHTML('beforeend', footer);
+
+    document.querySelector('#login-control-btn').addEventListener('click', logout);
 }
 
 export { makeTemplate };

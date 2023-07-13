@@ -60,6 +60,33 @@ const g = {
     const host = window.location.origin;
     window.location.href = `${host}${path}`;
   },
+
+  /**
+   * * 가져오고 싶은 쿠키의 이름을 인자로 사용
+   * @param {String} cookieName
+   * @returns {String | null}
+   */
+  getCookie: (cookieName) => {
+    const cookieMap = {};
+    const cookies = document.cookie.split(";");
+
+    for(const cookie of cookies) {
+      const separatorIndex = cookie.indexOf("=");
+      const name = cookie.slice(0, separatorIndex), value = cookie.slice(separatorIndex+1);
+      cookieMap[name] = value;
+    }
+
+    return cookieMap[cookieName] || null;
+  },
+
+  /**
+   * 특정 쿠키를 삭제
+   * @param {String} cookieName
+   * @returns {void}
+   */
+  deleteCookie: (cookieName) => {
+    document.cookie = `${cookieName}=; Max-Age=-99999999;`;
+  }
 };
 
 export default g;
