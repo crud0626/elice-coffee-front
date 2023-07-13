@@ -6,8 +6,7 @@ const body = document.querySelector('body');
 init();
 
 function render(userData) {
-    const { name, email, phone, address, point, rank } = userData;
-    console.log(userData.rank);
+    const { name, email, phone, point, rank } = userData;
     const profileSrc = rankImg[rank], rankName = ranks[rank];
     
     return `
@@ -43,7 +42,6 @@ function render(userData) {
                                             <li><span>이름:</span>${name}</li>
                                             <li><span>이메일:</span>${email}</li>
                                             <li><span>휴대전화:</span>${phone}</li>
-                                            <li><span>주소:</span>${address}</li>
                                             <li><span>포인트:</span>${point}</li>
                                             <li><span>등급:</span>${rankName}</li>
                                         </ul>

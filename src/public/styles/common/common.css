@@ -124,6 +124,12 @@ body {
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
+  height: 100vh;
+}
+
+main {
+  /* header + nav + footer */
+  min-height: calc(100vh - 150px);
 }
 
 p {

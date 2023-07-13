@@ -6,6 +6,21 @@ import { deliveryStatus, API_END_POINT } from '../constants/index.js';
 const body = document.querySelector("body");
 init();
 
+const emptyPage = `
+    <section class="empty-cart page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="block text-center">
+                        <h2 class="text-center">주문 내역이 없습니다.</h2>
+                        <a href="/" class="btn btn-main mt-20">HOME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+`;
+
 function renderProduct(item) {
     const { name, option, count, price, mainImage } = item;
 
@@ -27,7 +42,7 @@ function renderProduct(item) {
 function renderOrder(orderData) {
     const { id, items, status, itemTotal, createdAt } = orderData;
     
-    const totalPrice = itemTotal.toLocaleString('en');
+    const totalPrice = g.setParseStringAmount(itemTotal);
     const displayDate = g.formatDate(createdAt);
     const canOrderChange = validateCancel("status") ? "" : "disabled";
 
@@ -77,7 +92,27 @@ function renderOrder(orderData) {
     `;
 }
 
+function renderTable(orders) {
+    return `
+        <section class="user-dashboard page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="dashboard-wrapper user-dashboard">
+                            <div class="table-responsive">
+                                ${orders.map(order => renderOrder(order)).join("")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    `;
+}
+
 function render(orders) {
+    const isEmptyOrder = orders.length === 0;
+
     return `
         <main>
             <section class="page-header">
@@ -95,19 +130,7 @@ function render(orders) {
                     </div>
                 </div>
             </section>
-            <section class="user-dashboard page-wrapper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="dashboard-wrapper user-dashboard">
-                                <div class="table-responsive">
-                                    ${orders.map(order => renderOrder(order)).join("")}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            ${isEmptyOrder ? emptyPage : renderTable(orders)}
         </main>
     `;
 }

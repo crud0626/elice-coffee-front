@@ -7,7 +7,7 @@ const body = document.querySelector('body');
 init();
 
 function render(userData) {
-    const { name, email, phone, address } = userData;
+    const { name, email, phone } = userData;
 
     return `
         <main>
@@ -34,15 +34,6 @@ function render(userData) {
                                             class="form-control"  
                                             placeholder="이메일을 입력해주세요." 
                                             value="${email}"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <input 
-                                            name="address"
-                                            type="text" 
-                                            class="form-control"  
-                                            placeholder="주소를 입력해주세요." 
-                                            value="${address}"
                                         />
                                     </div>
                                     <div class="form-group">
