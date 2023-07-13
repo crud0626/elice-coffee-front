@@ -8,9 +8,17 @@ const body = document.querySelector("body");
 const urlParams = new URLSearchParams(window.location.search);
 const directFlag = urlParams.get("direct");
 // 바로 결제 / 장바구니에서 결제 분기
-const baskets = !!directFlag
-  ? JSON.parse(localStorage.getItem("directPay"))
-  : JSON.parse(localStorage.getItem("baskets")); // 장바구니
+
+let baskets;
+let basketName = "";
+if (!!directFlag) {
+  baskets = JSON.parse(localStorage.getItem("directPay")); // 직접결제
+  basketName = "directPay";
+} else {
+  baskets = JSON.parse(localStorage.getItem("checkedCartList")); // 장바구니
+  basketName = "checkedCartList";
+}
+
 let totalPrice = 0; // 총 주문 금액 저장
 
 const user = await getUserInfo();
@@ -136,19 +144,28 @@ const render = () => {
                                                     <td>${g.setParseStringAmount(
                                                       basket.quantity *
                                                         basket.price
-                                                    )}</td>
+                                                    )}원</td>
                                                 </tr>
                                             </tbody>
             
                 `;
     totalPrice += basket.quantity * basket.price;
   });
+  let fee = 3000;
+  if (totalPrice > 50000) {
+    fee = 0;
+  } else {
+    totalPrice += fee;
+  }
   content += `
                                         </table>
                                     </div>
                                 </div>
                             </div>
                             <div class="footer text-right">
+                                <p class="total-price">배송비 : ${g.setParseStringAmount(
+                                  fee
+                                )}원</p>
                                 <p class="total-price">총액 : {totalPrice}원</p>
                             <div>
                                 <button type="button" class="btn btn-main text-center" id="submitBtn">주문하기</button>
@@ -190,7 +207,9 @@ submitBtn.addEventListener("click", async (event) => {
   let postResult = await postOrder(orderData);
   // 주문완료시 페이지 이동 필요
   if (!postResult.error) {
-    g.redirectUserPage(`/pay/complete?id=${postResult.data._id}`);
+    g.redirectUserPage(
+      `/pay/complete?id=${postResult.data._id}&name=${basketName}`
+    );
   }
   throw new Error(postResult.error);
 });

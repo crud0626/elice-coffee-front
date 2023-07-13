@@ -6,8 +6,10 @@ const API_URL = API_END_POINT;
 
 let orderData = await getOrderInfo();
 let order = orderData[0];
+
 async function getOrderInfo() {
   const urlParams = new URLSearchParams(window.location.search);
+
   const res = await fetch(`${API_URL}/orders/${urlParams.get("id")}`, {
     credentials: "include",
   });
@@ -20,6 +22,9 @@ async function getOrderInfo() {
   }
 
   const result = await res.json();
+
+  // 로컬스토리지 비우기
+  window.localStorage.removeItem(urlParams.get("name"));
 
   return result.data;
 }
@@ -49,15 +54,18 @@ function renderProduct() {
       </tbody>
   </table>
   <div class="footer text-right">
+      <p class="total-price">배송비 : ${g.setParseStringAmount(
+        order.itemTotal > 50000 ? 0 : 3000
+      )}원</p>
       <p class="total-price">총액 : ${g.setParseStringAmount(
         order.itemTotal
       )}원</p>
       <div>
-          <button 
+          <a href="/"
               class="btn btn-default cancelBtn" 
           >
               홈으로
-          </button>
+          </a>
       </div>
   </div>
 </div>
@@ -82,7 +90,9 @@ function renderItem(items) {
                       <p>[ 옵션: ${item.option} ]</p>
                   </td>
                   <td>${item.quantity}</td>
-                  <td>${item.price.toLocaleString("en")}원</td>
+                  <td>${(item.quantity * item.price).toLocaleString(
+                    "en"
+                  )}원</td>
                 </tr>
             `;
   });
@@ -111,6 +121,3 @@ let contentHead = `
 
 const body = document.querySelector("body");
 makeTemplate(body, contentHead + renderProduct());
-
-// 로컬스토리지 비우기
-window.localStorage.clear();
