@@ -68,7 +68,7 @@ const g = {
    */
   getCookie: (cookieName) => {
     const cookieMap = {};
-    const cookies = document.cookie.split(";");
+    const cookies = document.cookie.split(";").map(c => c.trim());
 
     for(const cookie of cookies) {
       const separatorIndex = cookie.indexOf("=");
