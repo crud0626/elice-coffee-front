@@ -67,7 +67,6 @@ function content (data) {
     
                 <a href="${ productUrl }">
                     <div class="product-thumb">
-                        <span class="bage">Best</span>
                         <img class="img-responsive" src="${ imgSrc }" />
                     </div>
                 </a>
