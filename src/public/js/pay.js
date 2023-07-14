@@ -1,5 +1,5 @@
 import { makeTemplate } from "./common/template.js";
-import { API_END_POINT } from "../constants/index.js";
+import { API_END_POINT, validateRegex } from "../constants/index.js";
 import g from "./common/common.js";
 
 const API_URL = API_END_POINT;
@@ -182,6 +182,7 @@ makeTemplate(body, render());
 
 const forms = document.querySelectorAll("form");
 const submitBtn = document.querySelector("#submitBtn");
+// 주문하기 버튼 클릭
 submitBtn.addEventListener("click", async (event) => {
   event.preventDefault();
 
@@ -190,18 +191,42 @@ submitBtn.addEventListener("click", async (event) => {
   // 상품 장바구니 담을 변수
   const items = baskets;
 
-  const receiverName = receiver.querySelector("[name=receiverName]").value;
-  const receiverAddress = receiver.querySelector(
-    "[name=receiverAddress]"
-  ).value;
-  const receiverPhone = receiver.querySelector("[name=receiverPhone]").value;
+  const receiverName = receiver.querySelector("[name=receiverName]");
+  const receiverAddress = receiver.querySelector("[name=receiverAddress]");
+  const receiverPhone = receiver.querySelector("[name=receiverPhone]");
+
+  // 유효성 검사
+  if (!(receiverName.value.trim().length > 0)) {
+    alert("받는자 이름을 입력해 주세요.");
+    receiverName.focus();
+    return;
+  }
+
+  if (!(receiverAddress.value.trim().length > 0)) {
+    alert("받는자 배송지 주소를 입력해 주세요.");
+    receiverAddress.focus();
+    return;
+  }
+
+  if (!(receiverPhone.value.trim().length > 0)) {
+    alert("받는자 전화번호를 입력해주세요.");
+    receiverPhone.focus();
+    return;
+  }
+
+  if (!validateRegex.tel.test(receiverPhone.value)) {
+    alert("올바른 전화번호 형식이 아닙니다. 다시 확인해주세요.");
+    receiverPhone.focus();
+    return;
+  }
+
   const orderData = {
     items: items,
     itemTotal: totalPrice,
     userId: user.id,
-    address: receiverAddress,
-    receiver: receiverName,
-    receiverPhone: receiverPhone,
+    address: receiverAddress.value,
+    receiver: receiverName.value,
+    receiverPhone: receiverPhone.value,
   };
 
   let postResult = await postOrder(orderData);
