@@ -85,7 +85,7 @@ const g = {
    * @returns {void}
    */
   deleteCookie: (cookieName) => {
-    document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=${window.location.hostname};`;
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
   }
 };
 
