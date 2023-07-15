@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500');
+
+header {
+  position: sticky;
+  /* width: 100%; */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: #7b6d66;
+  height: 50px;
+  z-index: 99;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 10px;
+}
+
+header a:last-child {
+  margin-right: 10px;
+}
+
+header a div {
+  padding-top: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+nav {
+  position: sticky;
+  top: 50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  /* margin-top: 50px; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: #7b6d66;
+  height: 50px;
+  /* width: 100%; */
+  z-index: 99;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0;
+}
+
+nav ul li {
+  margin-right: 15px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* 본문 스타일 */
+section {
+  /* min-height: calc(100% - 120px); */
+  padding-top: 80px;
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: #7b6d66;
+  height: 50px;
+  color: #000;
+}
+
+.copyright {
+  color: whitesmoke;
+  margin-top: 12px;
+}
+
+.f-info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: small;
+  color: whitesmoke;
+}
+
+.f-logo {
+  color: whitesmoke;
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+}
+
+main {
+  /* header + nav + footer */
+  min-height: calc(100vh - 150px);
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  color: #757575;
+  font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+iframe {
+  border: 0;
+}
+
+a,
+a:focus,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+  color: #000;
+}
+
+blockquote {
+  font-size: 18px;
+  border-color: #000;
+  padding: 20px 40px;
+  text-align: left;
+  color: #777;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'],
+input[type='tel'] {
+  border-radius: 0;
+  box-shadow: none;
+  height: 45px;
+  outline: none;
+  font-weight: 200;
+  font-size: 12px;
+}
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='text']:focus,
+input[type='tel']:focus {
+  box-shadow: none;
+  border: 1px solid #000;
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 1014px;
+  }
+}
+
+.container {
+  min-width: 720px;
+  margin-bottom: 30px;
+}
+
+/* Page Header */
+
+.page-header {
+  margin-top: 0px;
+  background: #f5f5f5;
+  border-bottom: none;
+  padding: 30px 0;
+}
+
+.page-header > .container {
+  margin-bottom: 0px;
+}
+
+.page-header h1 {
+  font-weight: 200;
+  margin: 0 0 6px 0;
+}
+
+.page-header .breadcrumb {
+  background: transparent;
+  padding: 5px;
+  margin: 0;
+}
+
+.page-header .breadcrumb li {
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.page-header .breadcrumb li a {
+  color: #000;
+}
+
+.page-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

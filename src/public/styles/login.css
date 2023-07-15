@@ -1,0 +1,103 @@
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+section {
+  padding: 0;
+}
+
+.account .block {
+  background-color: #fff;
+  border: 1px solid #dedede;
+  padding: 30px;
+  margin: 100px 0;
+}
+.account .block .logo {
+  display: inline-block;
+}
+.account .block a {
+  color: #7A665C;
+}
+.account .block h2 {
+  font-weight: 400;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+
+.account .block form p {
+  margin-bottom: 20px;
+}
+
+.account .block form input[type='email'],
+.account .block form input[type='password'],
+.account .block form input[type='text'] {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.top-header .container {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #dedede;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.btn:focus {
+  color: #ddd;
+}
+
+.btn-main {
+  background: #7A665C;
+  color: #fff;
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 14px 35px;
+  text-transform: uppercase;
+  font-weight: 200;
+  border-radius: 0;
+}
+
+.btn-main:hover {
+  background: #8c7f78;
+  color: #fff;
+}
+
+.btn.active:focus,
+.btn:active:focus,
+.btn:focus {
+  outline: 0;
+}
+
+.comment-reply-form textarea,
+.comment-reply-form .btn-main{
+  height: auto;
+}
+
+.widget.widget-subscription .btn-main {
+  width: 100%;
+}
+
+@media (max-width: 400px) {
+  .account .block form .btn-main {
+    padding: 14px 19px;
+  }
+}
+
+.page-404 .btn-main {
+  margin-top: 40px;
+}
+
+.text-center h2 {
+  margin-bottom: 40px;
+}
+
+.text-center button {
+  margin-top: 10px;
+}
